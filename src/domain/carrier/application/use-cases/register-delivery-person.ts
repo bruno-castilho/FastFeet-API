@@ -41,8 +41,6 @@ export class RegisterDeliveryPersonUseCase {
       throw new CPFAlreadyExistsError(cpf)
     }
 
-    console.log
-
     const hashedPassword = await this.hashGenerator.hash(password)
 
     const deliveryPerson = DeliveryPerson.create({

@@ -18,6 +18,7 @@ export default defineConfig([
 
     rules: {
       'no-useless-constructor': 'off',
+      camelcase: 'off',
     },
   },
 ])
