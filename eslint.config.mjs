@@ -17,6 +17,7 @@ export default defineConfig([
     extends: compat.extends('@rocketseat/eslint-config/node'),
 
     rules: {
+      '@typescript-eslint/no-duplicate-enum-values': 'off',
       'no-useless-constructor': 'off',
       camelcase: 'off',
     },
