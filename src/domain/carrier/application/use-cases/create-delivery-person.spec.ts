@@ -1,5 +1,5 @@
 import { FakeHasher } from 'test/cryptography/fake-hasher'
-import { RegisterDeliveryPersonUseCase } from './register-delivery-person'
+import { CreateDeliveryPersonUseCase } from './create-delivery-person'
 import { InMemoryDeliveryPersonRepository } from 'test/repositories/in-memory-delivery-person-repository'
 import { CPFAlreadyExistsError } from './errors/cpf-already-exists-error'
 import { EmailAlreadyExistsError } from './errors/email-already-exists-error'
@@ -8,20 +8,20 @@ import { makeDeliveryPerson } from 'test/factories/make-delivery-person'
 let inMemoryDeliveryPersonRepository: InMemoryDeliveryPersonRepository
 let fakeHasher: FakeHasher
 
-let sut: RegisterDeliveryPersonUseCase
+let sut: CreateDeliveryPersonUseCase
 
-describe('Register Delivery Person', () => {
+describe('Create Delivery Person', () => {
   beforeEach(() => {
     inMemoryDeliveryPersonRepository = new InMemoryDeliveryPersonRepository()
     fakeHasher = new FakeHasher()
 
-    sut = new RegisterDeliveryPersonUseCase(
+    sut = new CreateDeliveryPersonUseCase(
       inMemoryDeliveryPersonRepository,
       fakeHasher,
     )
   })
 
-  it('should be able to register a new delivery person', async () => {
+  it('should be able to create a new delivery person', async () => {
     await sut.execute({
       firstName: 'John',
       lastName: 'Doe',
@@ -39,7 +39,7 @@ describe('Register Delivery Person', () => {
     )
   })
 
-  it('should not be able to register a delivery person with same email', async () => {
+  it('should not be able to create a delivery person with same email', async () => {
     const deliveryPerson = makeDeliveryPerson()
 
     await inMemoryDeliveryPersonRepository.create(deliveryPerson)
@@ -55,7 +55,7 @@ describe('Register Delivery Person', () => {
     ).rejects.toBeInstanceOf(EmailAlreadyExistsError)
   })
 
-  it('should not be able to register a delivery person with same cpf', async () => {
+  it('should not be able to create a delivery person with same cpf', async () => {
     const deliveryPerson = makeDeliveryPerson()
 
     await inMemoryDeliveryPersonRepository.create(deliveryPerson)

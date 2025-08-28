@@ -6,7 +6,7 @@ import { DeliveryPersonRepository } from '../repositories/delivery-person-reposi
 import { CPFAlreadyExistsError } from './errors/cpf-already-exists-error'
 import { EmailAlreadyExistsError } from './errors/email-already-exists-error'
 
-interface RegisterDeliveryPersonUseCaseRequest {
+interface CreateDeliveryPersonUseCaseRequest {
   firstName: string
   lastName: string
   cpf: string
@@ -14,7 +14,7 @@ interface RegisterDeliveryPersonUseCaseRequest {
   password: string
 }
 
-export class RegisterDeliveryPersonUseCase {
+export class CreateDeliveryPersonUseCase {
   constructor(
     private deliveryPersonRepository: DeliveryPersonRepository,
     private hashGenerator: HashGenerator,
@@ -26,7 +26,7 @@ export class RegisterDeliveryPersonUseCase {
     cpf,
     email,
     password,
-  }: RegisterDeliveryPersonUseCaseRequest) {
+  }: CreateDeliveryPersonUseCaseRequest) {
     const deliveryPersonWithSameEmail =
       await this.deliveryPersonRepository.findByEmail(email)
 
