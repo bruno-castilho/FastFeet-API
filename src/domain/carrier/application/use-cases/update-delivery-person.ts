@@ -2,6 +2,8 @@ import { DeliveryPersonRepository } from '../repositories/delivery-person-reposi
 import { DeliveryPersonDoesNotExistsError } from './errors/delivery-person-does-not-exists-error'
 import { CPF } from '../../enterprise/entities/value-objects/cpf'
 import { Email } from '../../enterprise/entities/value-objects/email'
+import { EmailAlreadyExistsError } from './errors/email-already-exists-error'
+import { CPFAlreadyExistsError } from './errors/cpf-already-exists-error'
 
 interface UpdateDeliveryPersonUseCaseRequest {
   deliveryPersonId: string
@@ -26,6 +28,26 @@ export class UpdateDeliveryPersonUseCase {
 
     if (!deliveryPerson)
       throw new DeliveryPersonDoesNotExistsError(deliveryPersonId)
+
+    const deliveryPersonWithSameEmail =
+      await this.deliveryPersonRepository.findByEmail(email)
+
+    if (
+      deliveryPersonWithSameEmail &&
+      !deliveryPerson.equals(deliveryPersonWithSameEmail)
+    ) {
+      throw new EmailAlreadyExistsError(email)
+    }
+
+    const deliveryPersonWithSameCpf =
+      await this.deliveryPersonRepository.findByCPF(cpf)
+
+    if (
+      deliveryPersonWithSameCpf &&
+      !deliveryPerson.equals(deliveryPersonWithSameCpf)
+    ) {
+      throw new CPFAlreadyExistsError(cpf)
+    }
 
     deliveryPerson.firstName = firstName
     deliveryPerson.lastName = lastName
