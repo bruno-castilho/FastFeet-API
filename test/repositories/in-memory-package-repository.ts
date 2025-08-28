@@ -23,4 +23,10 @@ export class InMemoryPackageRepository implements PackageRepository {
 
     this.items[itemIndex] = pckg
   }
+
+  async delete(pckg: Package) {
+    const itemIndex = this.items.findIndex((item) => item.id === pckg.id)
+
+    this.items.splice(itemIndex, 1)
+  }
 }
