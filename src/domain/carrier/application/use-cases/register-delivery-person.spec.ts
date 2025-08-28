@@ -1,11 +1,12 @@
 import { FakeHasher } from 'test/cryptography/fake-hasher'
 import { RegisterDeliveryPersonUseCase } from './register-delivery-person'
 import { InMemoryDeliveryPersonRepository } from 'test/repositories/in-memory-delivery-person-repository'
-import { makeDeliveryPerson } from 'test/factories/make-student'
+
 import { CPF } from '../../enterprise/entities/value-objects/cpf'
 import { CPFAlreadyExistsError } from './errors/cpf-already-exists-error'
 import { Email } from '../../enterprise/entities/value-objects/email'
 import { EmailAlreadyExistsError } from './errors/email-already-exists-error'
+import { makeDeliveryPerson } from 'test/factories/make-delivery-person'
 
 let inMemoryDeliveryPersonRepository: InMemoryDeliveryPersonRepository
 let fakeHasher: FakeHasher
