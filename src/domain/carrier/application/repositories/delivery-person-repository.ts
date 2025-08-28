@@ -5,4 +5,5 @@ export interface DeliveryPersonRepository {
   findByEmail(email: string): Promise<DeliveryPerson | null>
   findByCPF(cpf: string): Promise<DeliveryPerson | null>
   create(deliveryPerson: DeliveryPerson): Promise<void>
+  save(deliveryPerson: DeliveryPerson): Promise<void>
 }

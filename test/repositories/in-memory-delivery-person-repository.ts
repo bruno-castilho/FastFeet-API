@@ -39,4 +39,12 @@ export class InMemoryDeliveryPersonRepository
   async create(deliveryPerson: DeliveryPerson): Promise<void> {
     this.items.push(deliveryPerson)
   }
+
+  async save(deliveryPerson: DeliveryPerson) {
+    const itemIndex = this.items.findIndex(
+      (item) => item.id === deliveryPerson.id,
+    )
+
+    this.items[itemIndex] = deliveryPerson
+  }
 }
