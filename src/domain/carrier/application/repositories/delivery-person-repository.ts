@@ -6,4 +6,5 @@ export interface DeliveryPersonRepository {
   findByCPF(cpf: string): Promise<DeliveryPerson | null>
   create(deliveryPerson: DeliveryPerson): Promise<void>
   save(deliveryPerson: DeliveryPerson): Promise<void>
+  delete(deliveryPerson: DeliveryPerson): Promise<void>
 }
