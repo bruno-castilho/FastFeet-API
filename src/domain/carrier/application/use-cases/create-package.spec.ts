@@ -44,7 +44,7 @@ describe('Create Package', () => {
     )
   })
 
-  it('should be not able to create a new package if recipient does not exists', async () => {
+  it('should not be able to create a new package if the recipient does not exists', async () => {
     const recipientId = randomUUID()
 
     await expect(() =>

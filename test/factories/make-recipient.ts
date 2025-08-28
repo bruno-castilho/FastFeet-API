@@ -12,7 +12,7 @@ export function makeRecipient(
   override: Partial<RecipientProps> = {},
   id?: UniqueEntityID,
 ) {
-  const pckg = Recipient.create(
+  const recipient = Recipient.create(
     {
       cep: CEP.create('00000-000'),
       city: faker.location.city(),
@@ -31,5 +31,5 @@ export function makeRecipient(
     id,
   )
 
-  return pckg
+  return recipient
 }
