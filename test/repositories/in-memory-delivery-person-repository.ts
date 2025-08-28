@@ -6,6 +6,16 @@ export class InMemoryDeliveryPersonRepository
 {
   public items: DeliveryPerson[] = []
 
+  async findById(id: string) {
+    const pckg = this.items.find((item) => item.id.toValue() === id)
+
+    if (!pckg) {
+      return null
+    }
+
+    return pckg
+  }
+
   async findByEmail(email: string) {
     const deliveryPerson = this.items.find((item) => item.email.value === email)
 
