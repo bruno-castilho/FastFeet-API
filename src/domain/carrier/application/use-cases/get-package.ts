@@ -1,5 +1,5 @@
 import { PackageRepository } from '../repositories/package-repository'
-import { PackageNotFoundError } from './errors/package-not-found'
+import { PackageDoesNotExistsError } from './errors/package-does-not-exists-error'
 
 interface GetPackageUseCaseRequest {
   packageId: string
@@ -11,7 +11,7 @@ export class GetPackageUseCase {
   async execute({ packageId }: GetPackageUseCaseRequest) {
     const pckg = await this.packageRepository.findById(packageId)
 
-    if (!pckg) throw new PackageNotFoundError(packageId)
+    if (!pckg) throw new PackageDoesNotExistsError(packageId)
 
     return pckg
   }

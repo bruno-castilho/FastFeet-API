@@ -1,7 +1,7 @@
 import { UniqueEntityID } from '@/core/entities/unique-entity-id'
 import { PackageRepository } from '../repositories/package-repository'
 import { RecipientRepository } from '../repositories/recipient-repository'
-import { PackageNotFoundError } from './errors/package-not-found'
+import { PackageDoesNotExistsError } from './errors/package-does-not-exists-error'
 import { RecipientDoesNotExistsError } from './errors/recipient-does-not-exists-error'
 
 interface UpdatePackageUseCaseRequest {
@@ -27,7 +27,7 @@ export class UpdatePackageUseCase {
   }: UpdatePackageUseCaseRequest) {
     const pckg = await this.packageRepository.findById(packageId)
 
-    if (!pckg) throw new PackageNotFoundError(packageId)
+    if (!pckg) throw new PackageDoesNotExistsError(packageId)
 
     const recipientExists = await this.recipientRepository.findById(recipientId)
 

@@ -1,4 +1,4 @@
-export class PackageNotFoundError extends Error {
+export class PackageDoesNotExistsError extends Error {
   constructor(id: string) {
     super(`Encomenda "${id}" não encontrada.`)
   }

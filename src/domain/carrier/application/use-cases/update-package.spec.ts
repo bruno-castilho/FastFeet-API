@@ -5,7 +5,7 @@ import { UpdatePackageUseCase } from './update-package'
 import { makePackage } from 'test/factories/make-package'
 import { randomUUID } from 'crypto'
 import { RecipientDoesNotExistsError } from './errors/recipient-does-not-exists-error'
-import { PackageNotFoundError } from './errors/package-not-found'
+import { PackageDoesNotExistsError } from './errors/package-does-not-exists-error'
 
 let inMemoryPackageRepository: InMemoryPackageRepository
 let inMemoryRecipientRepository: InMemoryRecipientRepository
@@ -62,7 +62,7 @@ describe('Update Package', () => {
         recipientId,
         widthInCentimeters: 4,
       }),
-    ).rejects.toBeInstanceOf(PackageNotFoundError)
+    ).rejects.toBeInstanceOf(PackageDoesNotExistsError)
   })
 
   it('should not be able to update a package if the recipient does not exists', async () => {

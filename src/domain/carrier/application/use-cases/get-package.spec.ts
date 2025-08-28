@@ -1,6 +1,6 @@
 import { InMemoryPackageRepository } from 'test/repositories/in-memory-package-repository'
 import { GetPackageUseCase } from './get-package'
-import { PackageNotFoundError } from './errors/package-not-found'
+import { PackageDoesNotExistsError } from './errors/package-does-not-exists-error'
 import { makePackage } from 'test/factories/make-package'
 
 let inMemoryPackageRepository: InMemoryPackageRepository
@@ -29,6 +29,6 @@ describe('Get Package', () => {
       sut.execute({
         packageId: '1',
       }),
-    ).rejects.toBeInstanceOf(PackageNotFoundError)
+    ).rejects.toBeInstanceOf(PackageDoesNotExistsError)
   })
 })
