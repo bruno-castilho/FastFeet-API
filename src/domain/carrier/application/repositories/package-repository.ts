@@ -1,3 +1,4 @@
+import { PaginationParams } from '@/core/repositories/pagination-params'
 import { Package } from '../../enterprise/entities/package'
 
 export interface PackageRepository {
@@ -5,4 +6,8 @@ export interface PackageRepository {
   create(pckg: Package): Promise<void>
   save(pckg: Package): Promise<void>
   delete(pckg: Package): Promise<void>
+  findManyByDeliveryPerson(
+    deliveryPersonId: string,
+    params: PaginationParams,
+  ): Promise<Package[]>
 }

@@ -1,3 +1,4 @@
+import { PaginationParams } from '@/core/repositories/pagination-params'
 import { PackageRepository } from '@/domain/carrier/application/repositories/package-repository'
 import { Package } from '@/domain/carrier/enterprise/entities/package'
 
@@ -28,5 +29,16 @@ export class InMemoryPackageRepository implements PackageRepository {
     const itemIndex = this.items.findIndex((item) => item.id === pckg.id)
 
     this.items.splice(itemIndex, 1)
+  }
+
+  async findManyByDeliveryPerson(
+    deliveryPersonId: string,
+    { page }: PaginationParams,
+  ) {
+    const packages = this.items
+      .filter((item) => item.deliveredBy?.toString() === deliveryPersonId)
+      .slice((page - 1) * 20, page * 20)
+
+    return packages
   }
 }
