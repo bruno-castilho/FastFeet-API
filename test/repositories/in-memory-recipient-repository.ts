@@ -4,7 +4,17 @@ import { Recipient } from '@/domain/carrier/enterprise/entities/recipient'
 export class InMemoryRecipientRepository implements RecipientRepository {
   public items: Recipient[] = []
 
-  async create(recipient: Recipient): Promise<void> {
+  async findById(id: string) {
+    const recipient = this.items.find((item) => item.id.toValue() === id)
+
+    if (!recipient) {
+      return null
+    }
+
+    return recipient
+  }
+
+  async create(recipient: Recipient) {
     this.items.push(recipient)
   }
 }
