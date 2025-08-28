@@ -3,7 +3,7 @@ import { UniqueEntityID } from '@/core/entities/unique-entity-id'
 
 export enum State {
   CREATED,
-  WAITING,
+  PENDING,
   PICKEDUP,
   DELIVERED,
   RETURNED,
