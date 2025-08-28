@@ -13,8 +13,8 @@ export function makeDeliveryPerson(
 ) {
   const deliveryPerson = DeliveryPerson.create(
     {
-      name: faker.person.firstName(),
-      last_name: faker.person.lastName(),
+      firstName: faker.person.firstName(),
+      lastName: faker.person.lastName(),
       cpf: CPF.create('39053344705'),
       email: Email.create(faker.internet.email()),
       password: faker.internet.password(),

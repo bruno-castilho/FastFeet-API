@@ -14,8 +14,8 @@ describe('Create Recipient', () => {
 
   it('should be able to create a new recipient', async () => {
     await sut.execute({
-      name: 'John',
-      last_name: 'Doe',
+      firstName: 'John',
+      lastName: 'Doe',
       email: 'johndoe@example.com',
       cep: '00000-000',
       city: 'Florianopólis',
@@ -24,14 +24,14 @@ describe('Create Recipient', () => {
       number: 0,
       phone: '(00) 00000-0000',
       state: 'Santa Catarina',
-      street_address: 'Rua dos Bobos',
+      streetAddress: 'Rua dos Bobos',
     })
 
     expect(inMemoryRecipientRepository.items).toHaveLength(1)
     expect(inMemoryRecipientRepository.items[0]).toEqual(
       expect.objectContaining({
-        name: 'John',
-        last_name: 'Doe',
+        firstName: 'John',
+        lastName: 'Doe',
       }),
     )
   })

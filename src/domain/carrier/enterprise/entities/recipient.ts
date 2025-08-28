@@ -5,12 +5,12 @@ import { CEP } from './value-objects/cep'
 import { Phone } from './value-objects/phone'
 
 export interface RecipientProps {
-  name: string
-  last_name: string
+  firstName: string
+  lastName: string
   email: Email
   phone: Phone
   cep: CEP
-  street_address: string
+  streetAddress: string
   number: number
   complement?: string | null
   neighborhood: string
@@ -26,20 +26,20 @@ export class Recipient extends Entity<RecipientProps> {
     return recipient
   }
 
-  get name() {
-    return this.props.name
+  get firstName() {
+    return this.props.firstName
   }
 
-  set name(name: string) {
-    this.props.name = name
+  set firstName(firstName: string) {
+    this.props.firstName = firstName
   }
 
-  get last_name() {
-    return this.props.last_name
+  get lastName() {
+    return this.props.lastName
   }
 
-  set last_name(last_name: string) {
-    this.props.last_name = last_name
+  set lastName(lastName: string) {
+    this.props.lastName = lastName
   }
 
   get email() {
@@ -66,12 +66,12 @@ export class Recipient extends Entity<RecipientProps> {
     this.props.cep = cep
   }
 
-  get street_address() {
-    return this.props.street_address
+  get streetAddress() {
+    return this.props.streetAddress
   }
 
-  set street_address(street_address: string) {
-    this.props.street_address = street_address
+  set streetAddress(streetAddress: string) {
+    this.props.streetAddress = streetAddress
   }
 
   get number() {

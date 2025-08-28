@@ -5,12 +5,12 @@ import { Phone } from '../../enterprise/entities/value-objects/phone'
 import { RecipientRepository } from '../repositories/recipient-repository'
 
 interface CreateRecipientUseCaseRequest {
-  name: string
-  last_name: string
+  firstName: string
+  lastName: string
   email: string
   phone: string
   cep: string
-  street_address: string
+  streetAddress: string
   number: number
   complement?: string
   neighborhood: string
@@ -23,8 +23,8 @@ export class CreateRecipientUseCase {
   constructor(private recipientRepository: RecipientRepository) {}
 
   async execute({
-    name,
-    last_name,
+    firstName,
+    lastName,
     email,
     phone,
     cep,
@@ -33,18 +33,18 @@ export class CreateRecipientUseCase {
     neighborhood,
     number,
     state,
-    street_address,
+    streetAddress,
     complement,
   }: CreateRecipientUseCaseRequest) {
     const recipient = Recipient.create({
-      name,
-      last_name,
+      firstName,
+      lastName,
       city,
       country,
       neighborhood,
       number,
       state,
-      street_address,
+      streetAddress,
       complement,
       email: Email.create(email),
       cep: CEP.create(cep),

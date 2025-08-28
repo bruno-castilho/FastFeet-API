@@ -1,10 +1,7 @@
 import { FakeHasher } from 'test/cryptography/fake-hasher'
 import { RegisterDeliveryPersonUseCase } from './register-delivery-person'
 import { InMemoryDeliveryPersonRepository } from 'test/repositories/in-memory-delivery-person-repository'
-
-import { CPF } from '../../enterprise/entities/value-objects/cpf'
 import { CPFAlreadyExistsError } from './errors/cpf-already-exists-error'
-import { Email } from '../../enterprise/entities/value-objects/email'
 import { EmailAlreadyExistsError } from './errors/email-already-exists-error'
 import { makeDeliveryPerson } from 'test/factories/make-delivery-person'
 
@@ -26,8 +23,8 @@ describe('Register Delivery Person', () => {
 
   it('should be able to register a new delivery person', async () => {
     await sut.execute({
-      name: 'John',
-      last_name: 'Doe',
+      firstName: 'John',
+      lastName: 'Doe',
       email: 'johndoe@example.com',
       password: '123456',
       cpf: '39053344705',
@@ -36,24 +33,22 @@ describe('Register Delivery Person', () => {
     expect(inMemoryDeliveryPersonRepository.items).toHaveLength(1)
     expect(inMemoryDeliveryPersonRepository.items[0]).toEqual(
       expect.objectContaining({
-        name: 'John',
-        last_name: 'Doe',
+        firstName: 'John',
+        lastName: 'Doe',
       }),
     )
   })
 
   it('should not be able to register a delivery person with same email', async () => {
-    const deliveryPerson = makeDeliveryPerson({
-      email: Email.create('johndoe@example.com'),
-    })
+    const deliveryPerson = makeDeliveryPerson()
 
     await inMemoryDeliveryPersonRepository.create(deliveryPerson)
 
     await expect(() =>
       sut.execute({
-        name: 'John',
-        last_name: 'Doe',
-        email: 'johndoe@example.com',
+        firstName: 'John',
+        lastName: 'Doe',
+        email: deliveryPerson.email.value,
         password: '123456',
         cpf: '98765432100',
       }),
@@ -61,19 +56,17 @@ describe('Register Delivery Person', () => {
   })
 
   it('should not be able to register a delivery person with same cpf', async () => {
-    const deliveryPerson = makeDeliveryPerson({
-      cpf: CPF.create('39053344705'),
-    })
+    const deliveryPerson = makeDeliveryPerson()
 
     await inMemoryDeliveryPersonRepository.create(deliveryPerson)
 
     await expect(() =>
       sut.execute({
-        name: 'John',
-        last_name: 'Doe',
+        firstName: 'John',
+        lastName: 'Doe',
         email: 'johndoe@example.com',
         password: '123456',
-        cpf: '39053344705',
+        cpf: deliveryPerson.cpf.value,
       }),
     ).rejects.toBeInstanceOf(CPFAlreadyExistsError)
   })

@@ -4,8 +4,8 @@ import { CPF } from './value-objects/cpf'
 import { Email } from './value-objects/email'
 
 export interface DeliveryPersonProps {
-  name: string
-  last_name: string
+  firstName: string
+  lastName: string
   cpf: CPF
   email: Email
   password: string
@@ -18,20 +18,20 @@ export class DeliveryPerson extends Entity<DeliveryPersonProps> {
     return deliveryPerson
   }
 
-  get name() {
-    return this.props.name
+  get firstName() {
+    return this.props.firstName
   }
 
-  set name(name: string) {
-    this.props.name = name
+  set firstName(firstName: string) {
+    this.props.firstName = firstName
   }
 
-  get last_name() {
-    return this.props.last_name
+  get lastName() {
+    return this.props.lastName
   }
 
-  set last_name(last_name: string) {
-    this.props.last_name = last_name
+  set lastName(lastName: string) {
+    this.props.lastName = lastName
   }
 
   get cpf() {

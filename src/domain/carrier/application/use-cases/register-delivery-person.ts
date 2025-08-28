@@ -7,8 +7,8 @@ import { CPFAlreadyExistsError } from './errors/cpf-already-exists-error'
 import { EmailAlreadyExistsError } from './errors/email-already-exists-error'
 
 interface RegisterDeliveryPersonUseCaseRequest {
-  name: string
-  last_name: string
+  firstName: string
+  lastName: string
   cpf: string
   email: string
   password: string
@@ -21,8 +21,8 @@ export class RegisterDeliveryPersonUseCase {
   ) {}
 
   async execute({
-    name,
-    last_name,
+    firstName,
+    lastName,
     cpf,
     email,
     password,
@@ -44,8 +44,8 @@ export class RegisterDeliveryPersonUseCase {
     const hashedPassword = await this.hashGenerator.hash(password)
 
     const deliveryPerson = DeliveryPerson.create({
-      name,
-      last_name,
+      firstName,
+      lastName,
       cpf: CPF.create(cpf),
       email: Email.create(email),
       password: hashedPassword,
