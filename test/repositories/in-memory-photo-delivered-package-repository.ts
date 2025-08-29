@@ -18,6 +18,14 @@ export class InMemoryPhotoDeliveredPackageRepository
     return photoDeliveredPackage
   }
 
+  async save(photoDeliveredPackage: PhotoDeliveredPackage) {
+    const itemIndex = this.items.findIndex(
+      (item) => item.id === photoDeliveredPackage.id,
+    )
+
+    this.items[itemIndex] = photoDeliveredPackage
+  }
+
   async create(photoDeliveredPackage: PhotoDeliveredPackage) {
     this.items.push(photoDeliveredPackage)
   }

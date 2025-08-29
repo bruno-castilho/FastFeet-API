@@ -1,5 +1,6 @@
-import { Entity } from '@/core/entities/entity'
+import { AggregateRoot } from '@/core/entities/aggregate-root'
 import { UniqueEntityID } from '@/core/entities/unique-entity-id'
+import { PackageStateChangeEvent } from '../events/package-state-change-event'
 
 export enum State {
   CREATED,
@@ -18,7 +19,7 @@ export interface PackageProps {
   deliveredBy?: UniqueEntityID | null
 }
 
-export class Package extends Entity<PackageProps> {
+export class Package extends AggregateRoot<PackageProps> {
   static create(props: PackageProps, id?: UniqueEntityID) {
     return new Package(props, id)
   }
@@ -53,6 +54,8 @@ export class Package extends Entity<PackageProps> {
 
   set state(state: State) {
     this.props.state = state
+
+    this.addDomainEvent(new PackageStateChangeEvent(this, state))
   }
 
   get recipientId() {

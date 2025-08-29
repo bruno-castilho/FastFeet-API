@@ -3,4 +3,5 @@ import { PhotoDeliveredPackage } from '../../enterprise/entities/photo-delivered
 export interface PhotoDeliveredPackageRepository {
   findById(id: string): Promise<PhotoDeliveredPackage | null>
   create(photodeliveredpackage: PhotoDeliveredPackage): Promise<void>
+  save(photodeliveredpackage: PhotoDeliveredPackage): Promise<void>
 }

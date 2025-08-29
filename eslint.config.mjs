@@ -20,6 +20,7 @@ export default defineConfig([
       '@typescript-eslint/no-duplicate-enum-values': 'off',
       '@typescript-eslint/no-empty-object-type': 'off',
       'no-useless-constructor': 'off',
+      'no-new': 'off',
       camelcase: 'off',
     },
   },

@@ -1,3 +1,4 @@
+import { DomainEvents } from '@/core/events/domain-events'
 import { PaginationParams } from '@/core/repositories/pagination-params'
 import { PackageRepository } from '@/domain/carrier/application/repositories/package-repository'
 import { Package } from '@/domain/carrier/enterprise/entities/package'
@@ -23,6 +24,8 @@ export class InMemoryPackageRepository implements PackageRepository {
     const itemIndex = this.items.findIndex((item) => item.id === pckg.id)
 
     this.items[itemIndex] = pckg
+
+    DomainEvents.dispatchEventsForAggregate(pckg.id)
   }
 
   async delete(pckg: Package) {
