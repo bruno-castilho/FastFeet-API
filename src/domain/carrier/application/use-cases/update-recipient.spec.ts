@@ -3,16 +3,23 @@ import { makeRecipient } from 'test/factories/make-recipient'
 import { UpdateRecipientUseCase } from './update-recipient'
 import { randomUUID } from 'crypto'
 import { RecipientDoesNotExistsError } from './errors/recipient-does-not-exists-error'
+import { FakeGeolocation } from 'test/cep/fake-geolocation'
+import { InvalidCEP } from './errors/invalid-cep-error'
 
 let inMemoryRecipientRepository: InMemoryRecipientRepository
+let fakeGeolocation: FakeGeolocation
 
 let sut: UpdateRecipientUseCase
 
 describe('Update Recipient', () => {
   beforeEach(() => {
     inMemoryRecipientRepository = new InMemoryRecipientRepository()
+    fakeGeolocation = new FakeGeolocation()
 
-    sut = new UpdateRecipientUseCase(inMemoryRecipientRepository)
+    sut = new UpdateRecipientUseCase(
+      inMemoryRecipientRepository,
+      fakeGeolocation,
+    )
   })
 
   it('should be able to update a recipient', async () => {
@@ -25,7 +32,7 @@ describe('Update Recipient', () => {
       firstName: 'John',
       lastName: 'Doe',
       email: 'johndoe@example.com',
-      cep: '00000-000',
+      cep: '10000-000',
       city: 'Florianopólis',
       country: 'Brasil',
       neighborhood: 'Lago da Conceição',
@@ -63,5 +70,28 @@ describe('Update Recipient', () => {
         streetAddress: 'Rua dos Bobos',
       }),
     ).rejects.toBeInstanceOf(RecipientDoesNotExistsError)
+  })
+
+  it('should not be able to update a recipient with invalid cep', async () => {
+    const recipient = makeRecipient()
+
+    await inMemoryRecipientRepository.create(recipient)
+
+    await expect(() =>
+      sut.execute({
+        recipientId: recipient.id.toValue(),
+        firstName: 'John',
+        lastName: 'Doe',
+        email: 'johndoe@example.com',
+        cep: '00000-000',
+        city: 'Florianopólis',
+        country: 'Brasil',
+        neighborhood: 'Lago da Conceição',
+        number: 0,
+        phone: '(00) 00000-0000',
+        state: 'Santa Catarina',
+        streetAddress: 'Rua dos Bobos',
+      }),
+    ).rejects.toBeInstanceOf(InvalidCEP)
   })
 })

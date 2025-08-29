@@ -17,6 +17,8 @@ export interface RecipientProps {
   city: string
   state: string
   country: string
+  latitude: number
+  longitude: number
 }
 
 export class Recipient extends Entity<RecipientProps> {
@@ -120,5 +122,21 @@ export class Recipient extends Entity<RecipientProps> {
 
   set country(country: string) {
     this.props.country = country
+  }
+
+  get latitude() {
+    return this.props.latitude
+  }
+
+  set latitude(latitude: number) {
+    this.props.latitude = latitude
+  }
+
+  get longitude() {
+    return this.props.longitude
+  }
+
+  set longitude(longitude: number) {
+    this.props.longitude = longitude
   }
 }

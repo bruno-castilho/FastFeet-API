@@ -26,6 +26,8 @@ export function makeRecipient(
       lastName: faker.person.lastName(),
       phone: Phone.create('(00) 00000-0000'),
       streetAddress: faker.location.streetAddress(),
+      latitude: faker.location.latitude(),
+      longitude: faker.location.longitude(),
       ...override,
     },
     id,

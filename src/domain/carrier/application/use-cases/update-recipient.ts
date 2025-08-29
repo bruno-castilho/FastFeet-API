@@ -1,7 +1,9 @@
 import { CEP } from '../../enterprise/entities/value-objects/cep'
 import { Email } from '../../enterprise/entities/value-objects/email'
 import { Phone } from '../../enterprise/entities/value-objects/phone'
+import { GeolocationCEP } from '../cep/geolocation-cep'
 import { RecipientRepository } from '../repositories/recipient-repository'
+import { InvalidCEP } from './errors/invalid-cep-error'
 import { RecipientDoesNotExistsError } from './errors/recipient-does-not-exists-error'
 
 interface UpdateRecipientUseCaseRequest {
@@ -21,7 +23,10 @@ interface UpdateRecipientUseCaseRequest {
 }
 
 export class UpdateRecipientUseCase {
-  constructor(private recipientRepository: RecipientRepository) {}
+  constructor(
+    private recipientRepository: RecipientRepository,
+    private geolocationCEP: GeolocationCEP,
+  ) {}
 
   async execute({
     recipientId,
@@ -41,6 +46,10 @@ export class UpdateRecipientUseCase {
 
     if (!recipient) throw new RecipientDoesNotExistsError(recipientId)
 
+    const geolocation = await this.geolocationCEP.getCoordinates(cep)
+
+    if (!geolocation) throw new InvalidCEP()
+
     recipient.firstName = firstName
     recipient.lastName = lastName
     recipient.email = Email.create(email)
@@ -52,6 +61,8 @@ export class UpdateRecipientUseCase {
     recipient.city = city
     recipient.country = country
     recipient.neighborhood = neighborhood
+    recipient.latitude = geolocation.latitude
+    recipient.longitude = geolocation.longitude
 
     await this.recipientRepository.save(recipient)
 

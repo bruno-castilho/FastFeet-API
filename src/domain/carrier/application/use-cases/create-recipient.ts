@@ -2,7 +2,9 @@ import { Recipient } from '../../enterprise/entities/recipient'
 import { CEP } from '../../enterprise/entities/value-objects/cep'
 import { Email } from '../../enterprise/entities/value-objects/email'
 import { Phone } from '../../enterprise/entities/value-objects/phone'
+import { GeolocationCEP } from '../cep/geolocation-cep'
 import { RecipientRepository } from '../repositories/recipient-repository'
+import { InvalidCEP } from './errors/invalid-cep-error'
 
 interface CreateRecipientUseCaseRequest {
   firstName: string
@@ -20,7 +22,10 @@ interface CreateRecipientUseCaseRequest {
 }
 
 export class CreateRecipientUseCase {
-  constructor(private recipientRepository: RecipientRepository) {}
+  constructor(
+    private recipientRepository: RecipientRepository,
+    private geolocationCEP: GeolocationCEP,
+  ) {}
 
   async execute({
     firstName,
@@ -36,6 +41,10 @@ export class CreateRecipientUseCase {
     streetAddress,
     complement,
   }: CreateRecipientUseCaseRequest) {
+    const geolocation = await this.geolocationCEP.getCoordinates(cep)
+
+    if (!geolocation) throw new InvalidCEP()
+
     const recipient = Recipient.create({
       firstName,
       lastName,
@@ -49,6 +58,8 @@ export class CreateRecipientUseCase {
       email: Email.create(email),
       cep: CEP.create(cep),
       phone: Phone.create(phone),
+      latitude: geolocation.latitude,
+      longitude: geolocation.longitude,
     })
 
     this.recipientRepository.create(recipient)
