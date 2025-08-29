@@ -10,4 +10,10 @@ export interface PackageRepository {
     deliveryPersonId: string,
     params: PaginationParams,
   ): Promise<Package[]>
+
+  findManyNearbyPanding(
+    latitude: number,
+    longitude: number,
+    params: PaginationParams,
+  ): Promise<Package[]>
 }

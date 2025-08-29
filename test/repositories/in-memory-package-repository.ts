@@ -41,4 +41,14 @@ export class InMemoryPackageRepository implements PackageRepository {
 
     return packages
   }
+
+  async findManyNearbyPanding(
+    latitude: number,
+    longitude: number,
+    { page }: PaginationParams,
+  ) {
+    const packages = this.items.slice((page - 1) * 20, page * 20)
+
+    return packages
+  }
 }
