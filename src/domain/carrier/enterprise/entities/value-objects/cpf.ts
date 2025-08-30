@@ -1,3 +1,5 @@
+import { InvalidCPF } from './errors/invalid-cpf-error'
+
 export class CPF {
   public value: string
 
@@ -6,15 +8,15 @@ export class CPF {
   }
 
   static create(value: string) {
-    if (!CPF.isValid(value)) {
-      throw new Error('CPF inválido')
+    const cpf = value.replace(/[.-]/g, '')
+
+    if (!CPF.isValid(cpf)) {
+      throw new InvalidCPF()
     }
-    return new CPF(value)
+    return new CPF(cpf)
   }
 
   private static isValid(cpf: string): boolean {
-    cpf = cpf.replace(/[.-]/g, '')
-
     return (
       CPF.isFormatValid(cpf) &&
       CPF.isFirstDigitValid(cpf) &&
