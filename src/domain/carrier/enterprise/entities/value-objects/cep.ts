@@ -1,3 +1,5 @@
+import { InvalidCEP } from './errors/invalid-cep-error'
+
 export class CEP {
   public value: string
 
@@ -7,7 +9,7 @@ export class CEP {
 
   static create(value: string) {
     if (!CEP.isValid(value)) {
-      throw new Error('CEP inválido')
+      throw new InvalidCEP()
     }
     return new CEP(value)
   }
