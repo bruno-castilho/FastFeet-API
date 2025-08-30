@@ -28,6 +28,7 @@ describe('Mark Package as Returned', () => {
     expect(inMemoryPackageRepository.items[0]).toEqual(
       expect.objectContaining({
         state: State.RETURNED,
+        returnedAt: expect.any(Date),
       }),
     )
   })

@@ -17,11 +17,23 @@ export interface PackageProps {
   state: State
   recipientId: UniqueEntityID
   deliveredBy?: UniqueEntityID | null
+  createdAt?: Date
+  postedAt?: Date | null
+  pickedUpAt?: Date | null
+  deliveredAt?: Date | null
+  returnedAt?: Date | null
 }
 
 export class Package extends AggregateRoot<PackageProps> {
   static create(props: PackageProps, id?: UniqueEntityID) {
-    return new Package(props, id)
+    const pckg = new Package(
+      {
+        ...props,
+        createdAt: props.createdAt ?? new Date(),
+      },
+      id,
+    )
+    return pckg
   }
 
   get heightInCentimeters() {
@@ -72,5 +84,41 @@ export class Package extends AggregateRoot<PackageProps> {
 
   set deliveredBy(deliveredBy: UniqueEntityID | null) {
     this.props.deliveredBy = deliveredBy
+  }
+
+  get createdAt() {
+    return this.props.createdAt
+  }
+
+  get postedAt() {
+    return this.props.postedAt || null
+  }
+
+  set postedAt(postedAt: Date | null) {
+    this.props.postedAt = postedAt
+  }
+
+  get pickedUpAt() {
+    return this.props.pickedUpAt || null
+  }
+
+  set pickedUpAt(pickedUpAt: Date | null) {
+    this.props.pickedUpAt = pickedUpAt
+  }
+
+  get deliveredAt() {
+    return this.props.deliveredAt || null
+  }
+
+  set deliveredAt(deliveredAt: Date | null) {
+    this.props.deliveredAt = deliveredAt
+  }
+
+  get returnedAt() {
+    return this.props.returnedAt || null
+  }
+
+  set returnedAt(returnedAt: Date | null) {
+    this.props.returnedAt = returnedAt
   }
 }

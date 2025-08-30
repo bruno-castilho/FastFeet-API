@@ -15,5 +15,8 @@ export class MarkPackageAsPendingUseCase {
     if (!pckg) throw new PackageDoesNotExistsError(packageId)
 
     pckg.state = State.PENDING
+    pckg.postedAt = new Date()
+
+    this.packageRepository.save(pckg)
   }
 }

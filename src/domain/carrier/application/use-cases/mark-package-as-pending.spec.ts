@@ -28,6 +28,7 @@ describe('Mark Package as Pending', () => {
     expect(inMemoryPackageRepository.items[0]).toEqual(
       expect.objectContaining({
         state: State.PENDING,
+        postedAt: expect.any(Date),
       }),
     )
   })

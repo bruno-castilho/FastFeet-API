@@ -15,5 +15,8 @@ export class MarkPackageAsReturnedUseCase {
     if (!pckg) throw new PackageDoesNotExistsError(packageId)
 
     pckg.state = State.RETURNED
+    pckg.returnedAt = new Date()
+
+    this.packageRepository.save(pckg)
   }
 }

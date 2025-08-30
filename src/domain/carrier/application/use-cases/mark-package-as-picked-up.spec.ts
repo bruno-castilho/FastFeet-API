@@ -41,6 +41,7 @@ describe('Mark Package as PickedUp', () => {
     expect(inMemoryPackageRepository.items[0]).toEqual(
       expect.objectContaining({
         state: State.PICKEDUP,
+        pickedUpAt: expect.any(Date),
       }),
     )
   })

@@ -49,6 +49,7 @@ describe('Mark Package as Delivered', () => {
     expect(inMemoryPackageRepository.items[0]).toEqual(
       expect.objectContaining({
         state: State.DELIVERED,
+        deliveredAt: expect.any(Date),
       }),
     )
   })

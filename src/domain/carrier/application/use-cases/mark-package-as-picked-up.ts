@@ -30,5 +30,8 @@ export class MarkPackageAsPickedUpUseCase {
       throw new DeliveryPersonDoesNotExistsError(deliveryPersonId)
 
     pckg.state = State.PICKEDUP
+    pckg.pickedUpAt = new Date()
+
+    this.packageRepository.save(pckg)
   }
 }

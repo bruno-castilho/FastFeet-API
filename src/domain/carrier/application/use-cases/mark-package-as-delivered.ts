@@ -41,5 +41,9 @@ export class MarkPackageAsDeliveredUseCase {
     photoDeliveredPackage.packageId = new UniqueEntityID(packageId)
 
     pckg.state = State.DELIVERED
+    pckg.deliveredAt = new Date()
+
+    this.photoDeliveredPackageRepository.save(photoDeliveredPackage)
+    this.packageRepository.save(pckg)
   }
 }
