@@ -1,3 +1,5 @@
+import { InvalidEmail } from './errors/invalid-email-error'
+
 export class Email {
   public value: string
 
@@ -7,7 +9,7 @@ export class Email {
 
   static create(value: string) {
     if (!Email.isValid(value)) {
-      throw new Error('E-mail inválido')
+      throw new InvalidEmail()
     }
     return new Email(value)
   }
