@@ -1,3 +1,5 @@
+import { InvalidPhone } from './errors/invalid-phone-error'
+
 export class Phone {
   public value: string
 
@@ -7,7 +9,7 @@ export class Phone {
 
   static create(value: string) {
     if (!Phone.isValid(value)) {
-      throw new Error('Telefone inválido')
+      throw new InvalidPhone()
     }
     return new Phone(value)
   }
