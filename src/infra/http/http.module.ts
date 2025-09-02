@@ -3,9 +3,14 @@ import { CreateDeliveryPersonController } from './controllers/create-delivery-pe
 import { UseCasesModule } from '../use-cases/use-cases.module'
 import { FiltersModule } from './filters/filters.module'
 import { UpdateDeliveryPersonController } from './controllers/update-delivery-person.controller'
+import { RemoveDeliveryPersonController } from './controllers/remove-delivery-person.controller'
 
 @Module({
   imports: [UseCasesModule, FiltersModule],
-  controllers: [CreateDeliveryPersonController, UpdateDeliveryPersonController],
+  controllers: [
+    CreateDeliveryPersonController,
+    UpdateDeliveryPersonController,
+    RemoveDeliveryPersonController,
+  ],
 })
 export class HTTPModule {}
