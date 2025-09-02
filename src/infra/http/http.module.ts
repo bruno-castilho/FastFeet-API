@@ -5,6 +5,7 @@ import { FiltersModule } from './filters/filters.module'
 import { UpdateDeliveryPersonController } from './controllers/update-delivery-person.controller'
 import { RemoveDeliveryPersonController } from './controllers/remove-delivery-person.controller'
 import { GetDeliveryPersonController } from './controllers/get-delivery-person.controller'
+import { ChangeDeliveryPersonPasswordController } from './controllers/change-delivery-person-password.controller'
 
 @Module({
   imports: [UseCasesModule, FiltersModule],
@@ -13,6 +14,7 @@ import { GetDeliveryPersonController } from './controllers/get-delivery-person.c
     UpdateDeliveryPersonController,
     RemoveDeliveryPersonController,
     GetDeliveryPersonController,
+    ChangeDeliveryPersonPasswordController,
   ],
 })
 export class HTTPModule {}

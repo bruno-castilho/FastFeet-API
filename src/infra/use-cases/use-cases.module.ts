@@ -5,6 +5,7 @@ import { CryptographyModule } from '../cryptography/cryptography.module'
 import { UpdateDeliveryPerson } from './update-delivery-person'
 import { RemoveDeliveryPerson } from './remove-delivery-person'
 import { GetDeliveryPerson } from './get-delivery-person'
+import { ChangeDeliveryPersonPassword } from './change-delivery-person-password'
 
 @Module({
   imports: [DatabaseModule, CryptographyModule],
@@ -13,12 +14,14 @@ import { GetDeliveryPerson } from './get-delivery-person'
     UpdateDeliveryPerson,
     RemoveDeliveryPerson,
     GetDeliveryPerson,
+    ChangeDeliveryPersonPassword,
   ],
   exports: [
     CreateDeliveryPerson,
     UpdateDeliveryPerson,
     RemoveDeliveryPerson,
     GetDeliveryPerson,
+    ChangeDeliveryPersonPassword,
   ],
 })
 export class UseCasesModule {}
