@@ -20,16 +20,16 @@ describe('Get DeliveryPerson', () => {
     await inMemoryDeliveryPersonRepository.create(deliveryPerson)
 
     const result = await sut.execute({
-      deliverypersonId: deliveryPerson.id.toValue(),
+      deliveryPersonId: deliveryPerson.id.toValue(),
     })
 
-    expect(result).toEqual(deliveryPerson)
+    expect(result.deliveryPerson).toEqual(deliveryPerson)
   })
 
   it('should not be able to get a deliveryperson if the deliveryperson does not exists', async () => {
     await expect(() =>
       sut.execute({
-        deliverypersonId: '1',
+        deliveryPersonId: '1',
       }),
     ).rejects.toBeInstanceOf(DeliveryPersonDoesNotExistsError)
   })
