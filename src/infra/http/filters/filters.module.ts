@@ -4,6 +4,7 @@ import { EmailAlreadyExistsExceptionFilter } from './email-already-exists-except
 import { CPFAlreadyExistsExceptionFilter } from './cpf-already-exists-exception.filter'
 import { APP_FILTER } from '@nestjs/core'
 import { DeliveryPersonDoesNotExistsExceptionFilter } from './delivery-person-does-not-exists-exception.filter'
+import { InvalidCEPExceptionFilter } from './invalid-cep-exception.filter'
 
 @Module({
   providers: [
@@ -22,6 +23,10 @@ import { DeliveryPersonDoesNotExistsExceptionFilter } from './delivery-person-do
     {
       provide: APP_FILTER,
       useClass: DeliveryPersonDoesNotExistsExceptionFilter,
+    },
+    {
+      provide: APP_FILTER,
+      useClass: InvalidCEPExceptionFilter,
     },
   ],
 })

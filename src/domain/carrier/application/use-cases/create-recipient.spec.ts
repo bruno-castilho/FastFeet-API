@@ -1,7 +1,7 @@
 import { InMemoryRecipientRepository } from 'test/repositories/in-memory-recipient-repository'
 import { CreateRecipientUseCase } from './create-recipient'
 import { FakeGeolocation } from 'test/cep/fake-geolocation'
-import { InvalidCEP } from './errors/invalid-cep-error'
+import { InvalidCEPError } from './errors/invalid-cep-error'
 
 let inMemoryRecipientRepository: InMemoryRecipientRepository
 let fakeGeolocation: FakeGeolocation
@@ -58,6 +58,6 @@ describe('Create Recipient', () => {
         state: 'Santa Catarina',
         streetAddress: 'Rua dos Bobos',
       }),
-    ).rejects.toBeInstanceOf(InvalidCEP)
+    ).rejects.toBeInstanceOf(InvalidCEPError)
   })
 })

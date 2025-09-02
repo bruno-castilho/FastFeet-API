@@ -3,7 +3,7 @@ import { Email } from '../../enterprise/entities/value-objects/email'
 import { Phone } from '../../enterprise/entities/value-objects/phone'
 import { GeolocationCEP } from '../cep/geolocation-cep'
 import { RecipientRepository } from '../repositories/recipient-repository'
-import { InvalidCEP } from './errors/invalid-cep-error'
+import { InvalidCEPError } from './errors/invalid-cep-error'
 import { RecipientDoesNotExistsError } from './errors/recipient-does-not-exists-error'
 
 interface UpdateRecipientUseCaseRequest {
@@ -48,7 +48,7 @@ export class UpdateRecipientUseCase {
 
     const geolocation = await this.geolocationCEP.getCoordinates(cep)
 
-    if (!geolocation) throw new InvalidCEP()
+    if (!geolocation) throw new InvalidCEPError()
 
     recipient.firstName = firstName
     recipient.lastName = lastName

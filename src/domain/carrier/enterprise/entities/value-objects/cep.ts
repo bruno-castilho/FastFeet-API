@@ -1,3 +1,4 @@
+import { isValidCEP } from '@/core/utils/isValidCEP'
 import { InvalidCEP } from './errors/invalid-cep-error'
 
 export class CEP {
@@ -8,14 +9,9 @@ export class CEP {
   }
 
   static create(value: string) {
-    if (!CEP.isValid(value)) {
+    if (!isValidCEP(value)) {
       throw new InvalidCEP()
     }
     return new CEP(value)
-  }
-
-  private static isValid(cep: string): boolean {
-    const regex = /^\d{5}-?\d{3}$/
-    return regex.test(cep)
   }
 }

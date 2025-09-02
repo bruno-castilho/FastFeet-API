@@ -7,7 +7,7 @@ export class ZodExceptionFilter implements ExceptionFilter {
   catch(error: ZodError) {
     throw new BadRequestException({
       message: 'Erro de validação',
-      erros: fromZodError(error),
+      errors: fromZodError(error),
     })
   }
 }

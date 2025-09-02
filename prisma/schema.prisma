@@ -34,7 +34,7 @@ model Recipient {
   id       String @id @default(uuid())
   firstName     String
   lastName    String 
-  email String
+  email String @unique
   phone String
   cep String
   streetAddress String

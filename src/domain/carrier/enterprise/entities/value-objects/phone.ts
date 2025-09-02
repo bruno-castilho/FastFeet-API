@@ -1,3 +1,4 @@
+import { isValidPhone } from '@/core/utils/isValidPhone'
 import { InvalidPhone } from './errors/invalid-phone-error'
 
 export class Phone {
@@ -8,14 +9,9 @@ export class Phone {
   }
 
   static create(value: string) {
-    if (!Phone.isValid(value)) {
+    if (!isValidPhone(value)) {
       throw new InvalidPhone()
     }
     return new Phone(value)
-  }
-
-  private static isValid(phone: string): boolean {
-    const regex = /^(\(?\d{2}\)?\s?)?(\d{4,5}-?\d{4})$/
-    return regex.test(phone)
   }
 }

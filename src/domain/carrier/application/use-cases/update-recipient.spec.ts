@@ -4,7 +4,7 @@ import { UpdateRecipientUseCase } from './update-recipient'
 import { randomUUID } from 'crypto'
 import { RecipientDoesNotExistsError } from './errors/recipient-does-not-exists-error'
 import { FakeGeolocation } from 'test/cep/fake-geolocation'
-import { InvalidCEP } from './errors/invalid-cep-error'
+import { InvalidCEPError } from './errors/invalid-cep-error'
 
 let inMemoryRecipientRepository: InMemoryRecipientRepository
 let fakeGeolocation: FakeGeolocation
@@ -92,6 +92,6 @@ describe('Update Recipient', () => {
         state: 'Santa Catarina',
         streetAddress: 'Rua dos Bobos',
       }),
-    ).rejects.toBeInstanceOf(InvalidCEP)
+    ).rejects.toBeInstanceOf(InvalidCEPError)
   })
 })
