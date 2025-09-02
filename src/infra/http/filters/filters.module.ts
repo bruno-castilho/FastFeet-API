@@ -3,6 +3,7 @@ import { ZodExceptionFilter } from './zod-exception.filter'
 import { EmailAlreadyExistsExceptionFilter } from './email-already-exists-exception.filter'
 import { CPFAlreadyExistsExceptionFilter } from './cpf-already-exists-exception.filter'
 import { APP_FILTER } from '@nestjs/core'
+import { DeliveryPersonDoesNotExistsExceptionFilter } from './delivery-person-does-not-exists-exception.filter'
 
 @Module({
   providers: [
@@ -17,6 +18,10 @@ import { APP_FILTER } from '@nestjs/core'
     {
       provide: APP_FILTER,
       useClass: CPFAlreadyExistsExceptionFilter,
+    },
+    {
+      provide: APP_FILTER,
+      useClass: DeliveryPersonDoesNotExistsExceptionFilter,
     },
   ],
 })

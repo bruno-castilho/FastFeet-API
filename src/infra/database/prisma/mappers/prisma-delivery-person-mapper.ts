@@ -1,3 +1,4 @@
+import { UniqueEntityID } from '@/core/entities/unique-entity-id'
 import { DeliveryPerson } from '@/domain/carrier/enterprise/entities/delivery-person'
 import { CPF } from '@/domain/carrier/enterprise/entities/value-objects/cpf'
 import { Email } from '@/domain/carrier/enterprise/entities/value-objects/email'
@@ -17,12 +18,15 @@ export class PrismaDeliveryPersonMapper {
   }
 
   static toDomain(raw: User): DeliveryPerson {
-    return DeliveryPerson.create({
-      firstName: raw.firstName,
-      lastName: raw.lastName,
-      cpf: CPF.create(raw.cpf),
-      email: Email.create(raw.email),
-      password: raw.password,
-    })
+    return DeliveryPerson.create(
+      {
+        firstName: raw.firstName,
+        lastName: raw.lastName,
+        cpf: CPF.create(raw.cpf),
+        email: Email.create(raw.email),
+        password: raw.password,
+      },
+      new UniqueEntityID(raw.id),
+    )
   }
 }
