@@ -1,42 +1,35 @@
 import { AppModule } from '@/infra/app.module'
+import { DatabaseModule } from '@/infra/database/database.module'
 import { PrismaService } from '@/infra/database/prisma/prisma.service'
 import { INestApplication } from '@nestjs/common'
 import { Test } from '@nestjs/testing'
-import { randomUUID } from 'node:crypto'
 import request from 'supertest'
+import { DeliveryPersonFactory } from 'test/factories/make-delivery-person'
 
 describe('Remove Delivery Person (E2E)', () => {
   let app: INestApplication
+  let deliveryPersonFactoryFactory: DeliveryPersonFactory
   let prisma: PrismaService
 
   beforeAll(async () => {
     const moduleRef = await Test.createTestingModule({
-      imports: [AppModule],
+      imports: [AppModule, DatabaseModule],
+      providers: [DeliveryPersonFactory],
     }).compile()
 
     app = moduleRef.createNestApplication()
 
+    deliveryPersonFactoryFactory = moduleRef.get(DeliveryPersonFactory)
     prisma = moduleRef.get(PrismaService)
-
     await app.init()
   })
 
   test('[DELETE] /deliveryperson/:deliveryPersonId', async () => {
-    const deliveryPersonId = randomUUID()
-
-    await prisma.user.create({
-      data: {
-        id: deliveryPersonId,
-        cpf: '98765432100',
-        email: 'john@example.com',
-        firstName: 'firstName',
-        lastName: 'lastName',
-        password: 'password',
-      },
-    })
+    const deliveryPerson =
+      await deliveryPersonFactoryFactory.makePrismaDeliveryPerson()
 
     const response = await request(app.getHttpServer()).delete(
-      `/deliveryperson/${deliveryPersonId}`,
+      `/deliveryperson/${deliveryPerson.id.toString()}`,
     )
 
     expect(response.statusCode).toBe(200)
@@ -46,7 +39,7 @@ describe('Remove Delivery Person (E2E)', () => {
 
     const userOnDatabase = await prisma.user.findUnique({
       where: {
-        id: deliveryPersonId,
+        id: deliveryPerson.id.toString(),
       },
     })
 

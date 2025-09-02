@@ -6,6 +6,9 @@ import {
 } from '@/domain/carrier/enterprise/entities/delivery-person'
 import { CPF } from '@/domain/carrier/enterprise/entities/value-objects/cpf'
 import { Email } from '@/domain/carrier/enterprise/entities/value-objects/email'
+import { Injectable } from '@nestjs/common'
+import { PrismaService } from '@/infra/database/prisma/prisma.service'
+import { PrismaDeliveryPersonMapper } from '@/infra/database/prisma/mappers/prisma-delivery-person-mapper'
 
 export function makeDeliveryPerson(
   override: Partial<DeliveryPersonProps> = {},
@@ -24,4 +27,21 @@ export function makeDeliveryPerson(
   )
 
   return deliveryPerson
+}
+
+@Injectable()
+export class DeliveryPersonFactory {
+  constructor(private prisma: PrismaService) {}
+
+  async makePrismaDeliveryPerson(
+    data: Partial<DeliveryPersonProps> = {},
+  ): Promise<DeliveryPerson> {
+    const deliveryPerson = makeDeliveryPerson(data)
+
+    await this.prisma.user.create({
+      data: PrismaDeliveryPersonMapper.toPrisma(deliveryPerson),
+    })
+
+    return deliveryPerson
+  }
 }
