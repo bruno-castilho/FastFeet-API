@@ -29,3 +29,24 @@ model User {
   role UserRole @default(DELIVERY_PERSON)
   @@map("users")
 }
+
+model Recipient {
+  id       String @id @default(uuid())
+  firstName     String
+  lastName    String 
+  email String
+  phone String
+  cep String
+  streetAddress String
+  number  Int
+  complement String?
+  neighborhood String
+  city String
+  state String
+  country String
+  latitude Int
+  longitude Int
+
+  @@map("recipient")
+}
+
