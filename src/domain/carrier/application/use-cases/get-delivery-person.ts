@@ -2,19 +2,19 @@ import { DeliveryPersonRepository } from '../repositories/delivery-person-reposi
 import { DeliveryPersonDoesNotExistsError } from './errors/delivery-person-does-not-exists-error'
 
 interface GetDeliveryPersonUseCaseRequest {
-  deliverypersonId: string
+  deliveryPersonId: string
 }
 
 export class GetDeliveryPersonUseCase {
   constructor(private deliverypersonRepository: DeliveryPersonRepository) {}
 
-  async execute({ deliverypersonId }: GetDeliveryPersonUseCaseRequest) {
+  async execute({ deliveryPersonId }: GetDeliveryPersonUseCaseRequest) {
     const deliveryPerson =
-      await this.deliverypersonRepository.findById(deliverypersonId)
+      await this.deliverypersonRepository.findById(deliveryPersonId)
 
     if (!deliveryPerson)
-      throw new DeliveryPersonDoesNotExistsError(deliverypersonId)
+      throw new DeliveryPersonDoesNotExistsError(deliveryPersonId)
 
-    return deliveryPerson
+    return { deliveryPerson }
   }
 }

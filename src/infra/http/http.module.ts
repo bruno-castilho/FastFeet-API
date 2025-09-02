@@ -4,6 +4,7 @@ import { UseCasesModule } from '../use-cases/use-cases.module'
 import { FiltersModule } from './filters/filters.module'
 import { UpdateDeliveryPersonController } from './controllers/update-delivery-person.controller'
 import { RemoveDeliveryPersonController } from './controllers/remove-delivery-person.controller'
+import { GetDeliveryPersonController } from './controllers/get-delivery-person.controller'
 
 @Module({
   imports: [UseCasesModule, FiltersModule],
@@ -11,6 +12,7 @@ import { RemoveDeliveryPersonController } from './controllers/remove-delivery-pe
     CreateDeliveryPersonController,
     UpdateDeliveryPersonController,
     RemoveDeliveryPersonController,
+    GetDeliveryPersonController,
   ],
 })
 export class HTTPModule {}
