@@ -15,6 +15,7 @@ import { CreatePackage } from './create-package'
 import { UpdatePackage } from './update-package'
 import { RemovePackage } from './remove-package'
 import { GetPackage } from './get-package'
+import { MarkPackageAsPending } from './mark-package-as-pending'
 
 @Module({
   imports: [DatabaseModule, CryptographyModule, CepModule],
@@ -32,6 +33,7 @@ import { GetPackage } from './get-package'
     UpdatePackage,
     RemovePackage,
     GetPackage,
+    MarkPackageAsPending,
   ],
   exports: [
     CreateDeliveryPerson,
@@ -47,6 +49,7 @@ import { GetPackage } from './get-package'
     UpdatePackage,
     RemovePackage,
     GetPackage,
+    MarkPackageAsPending,
   ],
 })
 export class UseCasesModule {}

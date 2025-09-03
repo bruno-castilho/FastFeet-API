@@ -14,6 +14,7 @@ import { CreatePackageController } from './controllers/create-package.controller
 import { UpdatePackageController } from './controllers/update-package.controller'
 import { RemovePackageController } from './controllers/remove-package.controller'
 import { GetPackageController } from './controllers/get-package.controller'
+import { MarkPackageAsPendingController } from './controllers/mark-package-as-pending.controller'
 
 @Module({
   imports: [UseCasesModule, FiltersModule],
@@ -31,6 +32,7 @@ import { GetPackageController } from './controllers/get-package.controller'
     UpdatePackageController,
     RemovePackageController,
     GetPackageController,
+    MarkPackageAsPendingController,
   ],
 })
 export class HTTPModule {}

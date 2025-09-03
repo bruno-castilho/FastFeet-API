@@ -17,6 +17,6 @@ export class MarkPackageAsPendingUseCase {
     pckg.state = State.PENDING
     pckg.postedAt = new Date()
 
-    this.packageRepository.save(pckg)
+    await this.packageRepository.save(pckg)
   }
 }
