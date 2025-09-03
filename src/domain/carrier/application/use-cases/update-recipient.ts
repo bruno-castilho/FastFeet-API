@@ -39,6 +39,7 @@ export class UpdateRecipientUseCase {
     number,
     complement,
     city,
+    state,
     country,
     neighborhood,
   }: UpdateRecipientUseCaseRequest) {
@@ -63,6 +64,7 @@ export class UpdateRecipientUseCase {
     recipient.neighborhood = neighborhood
     recipient.latitude = geolocation.latitude
     recipient.longitude = geolocation.longitude
+    recipient.state = state
 
     await this.recipientRepository.save(recipient)
 

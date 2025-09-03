@@ -7,6 +7,7 @@ import { RemoveDeliveryPersonController } from './controllers/remove-delivery-pe
 import { GetDeliveryPersonController } from './controllers/get-delivery-person.controller'
 import { ChangeDeliveryPersonPasswordController } from './controllers/change-delivery-person-password.controller'
 import { CreateRecipientController } from './controllers/create-recipient.controller'
+import { UpdateRecipientController } from './controllers/update-recipient.controller'
 
 @Module({
   imports: [UseCasesModule, FiltersModule],
@@ -17,6 +18,7 @@ import { CreateRecipientController } from './controllers/create-recipient.contro
     GetDeliveryPersonController,
     ChangeDeliveryPersonPasswordController,
     CreateRecipientController,
+    UpdateRecipientController,
   ],
 })
 export class HTTPModule {}

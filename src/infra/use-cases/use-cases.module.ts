@@ -8,6 +8,7 @@ import { GetDeliveryPerson } from './get-delivery-person'
 import { ChangeDeliveryPersonPassword } from './change-delivery-person-password'
 import { CepModule } from '../cep/cep.module'
 import { CreateRecipient } from './create-recipient'
+import { UpdateRecipient } from './update-recipient'
 
 @Module({
   imports: [DatabaseModule, CryptographyModule, CepModule],
@@ -18,6 +19,7 @@ import { CreateRecipient } from './create-recipient'
     GetDeliveryPerson,
     ChangeDeliveryPersonPassword,
     CreateRecipient,
+    UpdateRecipient,
   ],
   exports: [
     CreateDeliveryPerson,
@@ -26,6 +28,7 @@ import { CreateRecipient } from './create-recipient'
     GetDeliveryPerson,
     ChangeDeliveryPersonPassword,
     CreateRecipient,
+    UpdateRecipient,
   ],
 })
 export class UseCasesModule {}
