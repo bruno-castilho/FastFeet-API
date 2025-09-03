@@ -6,6 +6,7 @@ import { APP_FILTER } from '@nestjs/core'
 import { DeliveryPersonDoesNotExistsExceptionFilter } from './delivery-person-does-not-exists-exception.filter'
 import { InvalidCEPExceptionFilter } from './invalid-cep-exception.filter'
 import { RecipientDoesNotExistsError } from '@/domain/carrier/application/use-cases/errors/recipient-does-not-exists-error'
+import { PackageDoesNotExistsExceptionFilter } from './package-does-not-exists-exception.filter'
 
 @Module({
   providers: [
@@ -32,6 +33,10 @@ import { RecipientDoesNotExistsError } from '@/domain/carrier/application/use-ca
     {
       provide: APP_FILTER,
       useClass: RecipientDoesNotExistsError,
+    },
+    {
+      provide: APP_FILTER,
+      useClass: PackageDoesNotExistsExceptionFilter,
     },
   ],
 })
