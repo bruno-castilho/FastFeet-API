@@ -13,6 +13,7 @@ import { RemoveRecipient } from './remove-recipient'
 import { GetRecipient } from './get-recipient'
 import { CreatePackage } from './create-package'
 import { UpdatePackage } from './update-package'
+import { RemovePackage } from './remove-package'
 
 @Module({
   imports: [DatabaseModule, CryptographyModule, CepModule],
@@ -28,6 +29,7 @@ import { UpdatePackage } from './update-package'
     GetRecipient,
     CreatePackage,
     UpdatePackage,
+    RemovePackage,
   ],
   exports: [
     CreateDeliveryPerson,
@@ -41,6 +43,7 @@ import { UpdatePackage } from './update-package'
     GetRecipient,
     CreatePackage,
     UpdatePackage,
+    RemovePackage,
   ],
 })
 export class UseCasesModule {}
