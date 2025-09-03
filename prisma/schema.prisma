@@ -44,8 +44,8 @@ model Recipient {
   city String
   state String
   country String
-  latitude Int
-  longitude Int
+  latitude Float
+  longitude Float
 
   @@map("recipient")
 }
