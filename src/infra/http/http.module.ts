@@ -10,6 +10,7 @@ import { CreateRecipientController } from './controllers/create-recipient.contro
 import { UpdateRecipientController } from './controllers/update-recipient.controller'
 import { RemoveRecipientController } from './controllers/remove-recipient.controller'
 import { GetRecipientController } from './controllers/get-recipient.controller'
+import { CreatePackageController } from './controllers/create-package.controller'
 
 @Module({
   imports: [UseCasesModule, FiltersModule],
@@ -23,6 +24,7 @@ import { GetRecipientController } from './controllers/get-recipient.controller'
     UpdateRecipientController,
     RemoveRecipientController,
     GetRecipientController,
+    CreatePackageController,
   ],
 })
 export class HTTPModule {}
