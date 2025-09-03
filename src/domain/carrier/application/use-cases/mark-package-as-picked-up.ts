@@ -31,6 +31,7 @@ export class MarkPackageAsPickedUpUseCase {
 
     pckg.state = State.PICKEDUP
     pckg.pickedUpAt = new Date()
+    pckg.deliveredBy = deliveryPerson.id
 
     this.packageRepository.save(pckg)
   }

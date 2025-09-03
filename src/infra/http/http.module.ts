@@ -15,6 +15,7 @@ import { UpdatePackageController } from './controllers/update-package.controller
 import { RemovePackageController } from './controllers/remove-package.controller'
 import { GetPackageController } from './controllers/get-package.controller'
 import { MarkPackageAsPendingController } from './controllers/mark-package-as-pending.controller'
+import { MarkPackageAsPickedUpController } from './controllers/mark-package-as-picked-up.controller'
 
 @Module({
   imports: [UseCasesModule, FiltersModule],
@@ -33,6 +34,7 @@ import { MarkPackageAsPendingController } from './controllers/mark-package-as-pe
     RemovePackageController,
     GetPackageController,
     MarkPackageAsPendingController,
+    MarkPackageAsPickedUpController,
   ],
 })
 export class HTTPModule {}
