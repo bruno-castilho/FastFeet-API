@@ -13,6 +13,6 @@ export class GetPackageUseCase {
 
     if (!pckg) throw new PackageDoesNotExistsError(packageId)
 
-    return pckg
+    return { pckg }
   }
 }

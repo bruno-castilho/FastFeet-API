@@ -21,7 +21,7 @@ describe('Get Package', () => {
 
     const result = await sut.execute({ packageId: pckg.id.toValue() })
 
-    expect(result).toEqual(pckg)
+    expect(result.pckg).toEqual(pckg)
   })
 
   it('should not be able to get a package if the package does not exists', async () => {
