@@ -21,7 +21,7 @@ describe('Get Recipient', () => {
 
     const result = await sut.execute({ recipientId: recipient.id.toValue() })
 
-    expect(result).toEqual(recipient)
+    expect(result.recipient).toEqual(recipient)
   })
 
   it('should not be able to get a recipient if the recipient does not exists', async () => {

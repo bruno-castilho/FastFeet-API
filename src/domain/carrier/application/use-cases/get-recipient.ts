@@ -13,6 +13,6 @@ export class GetRecipientUseCase {
 
     if (!recipient) throw new RecipientDoesNotExistsError(recipientId)
 
-    return recipient
+    return { recipient }
   }
 }
