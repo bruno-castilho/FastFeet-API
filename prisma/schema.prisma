@@ -27,6 +27,9 @@ model User {
   password String
 
   role UserRole @default(DELIVERY_PERSON)
+
+  packagesDelivered     Packages[]
+
   @@map("users")
 }
 
@@ -47,6 +50,41 @@ model Recipient {
   latitude Float
   longitude Float
 
+  packages     Packages[]
+
   @@map("recipient")
 }
+
+
+enum PackageState {
+  CREATED
+  PENDING
+  PICKEDUP
+  DELIVERED
+  RETURNED
+}
+
+model Packages {
+  id       String @id @default(uuid())
+  heightInCentimeters     Int
+  widthInCentimeters    Int 
+  weightInGrams Int
+  state PackageState @default(CREATED)
+  createdAt DateTime @default(now())
+  postedAt DateTime?
+  pickedUpAt DateTime?
+  deliveredAt DateTime?
+  returnedAt DateTime?
+  recipientId String
+  deliveredBy String?
+
+  recipient      Recipient         @relation(fields: [recipientId], references: [id])
+  deliveredPerson      User?         @relation(fields: [deliveredBy], references: [id])
+
+
+  @@map("packages")
+}
+
+
+
 
