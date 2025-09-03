@@ -28,7 +28,7 @@ model User {
 
   role UserRole @default(DELIVERY_PERSON)
 
-  packagesDelivered     Packages[]
+  packagesDelivered     Package[]
 
   @@map("users")
 }
@@ -50,9 +50,9 @@ model Recipient {
   latitude Float
   longitude Float
 
-  packages     Packages[]
+  packages     Package[]
 
-  @@map("recipient")
+  @@map("recipients")
 }
 
 
@@ -64,7 +64,7 @@ enum PackageState {
   RETURNED
 }
 
-model Packages {
+model Package {
   id       String @id @default(uuid())
   heightInCentimeters     Int
   widthInCentimeters    Int 
