@@ -1,5 +1,5 @@
 import { UniqueEntityID } from '@/core/entities/unique-entity-id'
-import { Package, State } from '../../enterprise/entities/package'
+import { Package } from '../../enterprise/entities/package'
 import { PackageRepository } from '../repositories/package-repository'
 import { RecipientRepository } from '../repositories/recipient-repository'
 import { RecipientDoesNotExistsError } from './errors/recipient-does-not-exists-error'
@@ -33,7 +33,7 @@ export class CreatePackageUseCase {
       heightInCentimeters,
       widthInCentimeters,
       weightInGrams,
-      state: State.CREATED,
+      state: 'CREATED',
       recipientId: new UniqueEntityID(recipientId),
     })
 

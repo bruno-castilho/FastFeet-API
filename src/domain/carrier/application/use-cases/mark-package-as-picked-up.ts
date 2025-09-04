@@ -1,4 +1,3 @@
-import { State } from '../../enterprise/entities/package'
 import { DeliveryPersonRepository } from '../repositories/delivery-person-repository'
 import { PackageRepository } from '../repositories/package-repository'
 import { DeliveryPersonDoesNotExistsError } from './errors/delivery-person-does-not-exists-error'
@@ -29,7 +28,7 @@ export class MarkPackageAsPickedUpUseCase {
     if (!deliveryPerson)
       throw new DeliveryPersonDoesNotExistsError(deliveryPersonId)
 
-    pckg.state = State.PICKEDUP
+    pckg.state = 'PICKEDUP'
     pckg.pickedUpAt = new Date()
     pckg.deliveredBy = deliveryPerson.id
 

@@ -2,7 +2,6 @@ import { InMemoryPackageRepository } from 'test/repositories/in-memory-package-r
 import { makePackage } from 'test/factories/make-package'
 import { randomUUID } from 'crypto'
 import { PackageDoesNotExistsError } from './errors/package-does-not-exists-error'
-import { State } from '../../enterprise/entities/package'
 import { MarkPackageAsPickedUpUseCase } from './mark-package-as-picked-up'
 import { makeDeliveryPerson } from 'test/factories/make-delivery-person'
 import { InMemoryDeliveryPersonRepository } from 'test/repositories/in-memory-delivery-person-repository'
@@ -40,7 +39,7 @@ describe('Mark Package as PickedUp', () => {
 
     expect(inMemoryPackageRepository.items[0]).toEqual(
       expect.objectContaining({
-        state: State.PICKEDUP,
+        state: 'PICKEDUP',
         pickedUpAt: expect.any(Date),
       }),
     )

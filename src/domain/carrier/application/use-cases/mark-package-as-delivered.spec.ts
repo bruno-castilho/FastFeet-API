@@ -3,7 +3,6 @@ import { makePackage } from 'test/factories/make-package'
 import { randomUUID } from 'crypto'
 import { PackageDoesNotExistsError } from './errors/package-does-not-exists-error'
 import { MarkPackageAsDeliveredUseCase } from './mark-package-as-delivered'
-import { State } from '../../enterprise/entities/package'
 import { InMemoryPhotoDeliveredPackageRepository } from 'test/repositories/in-memory-photo-delivered-package-repository'
 import { makePhotoDeliveredPackage } from 'test/factories/mark-photo-delivered-package'
 import { PhotoDeliveredPackageDoesNotExistsError } from './errors/photo-delivered-package-does-not-exists-error'
@@ -48,7 +47,7 @@ describe('Mark Package as Delivered', () => {
 
     expect(inMemoryPackageRepository.items[0]).toEqual(
       expect.objectContaining({
-        state: State.DELIVERED,
+        state: 'DELIVERED',
         deliveredAt: expect.any(Date),
       }),
     )

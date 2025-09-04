@@ -3,7 +3,6 @@ import { makePackage } from 'test/factories/make-package'
 import { randomUUID } from 'crypto'
 import { PackageDoesNotExistsError } from './errors/package-does-not-exists-error'
 import { MarkPackageAsPendingUseCase } from './mark-package-as-pending'
-import { State } from '../../enterprise/entities/package'
 
 let inMemoryPackageRepository: InMemoryPackageRepository
 
@@ -27,7 +26,7 @@ describe('Mark Package as Pending', () => {
 
     expect(inMemoryPackageRepository.items[0]).toEqual(
       expect.objectContaining({
-        state: State.PENDING,
+        state: 'PENDING',
         postedAt: expect.any(Date),
       }),
     )

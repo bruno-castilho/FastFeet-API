@@ -2,13 +2,12 @@ import { AggregateRoot } from '@/core/entities/aggregate-root'
 import { UniqueEntityID } from '@/core/entities/unique-entity-id'
 import { PackageStateChangeEvent } from '../events/package-state-change-event'
 
-export enum State {
-  CREATED,
-  PENDING,
-  PICKEDUP,
-  DELIVERED,
-  RETURNED,
-}
+export type State =
+  | 'CREATED'
+  | 'PENDING'
+  | 'PICKEDUP'
+  | 'DELIVERED'
+  | 'RETURNED'
 
 export interface PackageProps {
   heightInCentimeters: number

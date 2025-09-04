@@ -3,7 +3,6 @@ import { makePackage } from 'test/factories/make-package'
 import { randomUUID } from 'crypto'
 import { PackageDoesNotExistsError } from './errors/package-does-not-exists-error'
 import { MarkPackageAsReturnedUseCase } from './mark-package-as-returned'
-import { State } from '../../enterprise/entities/package'
 
 let inMemoryPackageRepository: InMemoryPackageRepository
 
@@ -27,7 +26,7 @@ describe('Mark Package as Returned', () => {
 
     expect(inMemoryPackageRepository.items[0]).toEqual(
       expect.objectContaining({
-        state: State.RETURNED,
+        state: 'RETURNED',
         returnedAt: expect.any(Date),
       }),
     )

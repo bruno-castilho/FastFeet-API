@@ -3,7 +3,6 @@ import { UniqueEntityID } from '@/core/entities/unique-entity-id'
 import {
   Package,
   PackageProps,
-  State,
 } from '@/domain/carrier/enterprise/entities/package'
 import { randomUUID } from 'node:crypto'
 import { Injectable } from '@nestjs/common'
@@ -20,7 +19,7 @@ export function makePackage(
       heightInCentimeters: faker.number.int({ max: 1000 }),
       widthInCentimeters: faker.number.int({ max: 1000 }),
       recipientId: new UniqueEntityID(randomUUID()),
-      state: State.CREATED,
+      state: 'CREATED',
       ...override,
     },
     id,

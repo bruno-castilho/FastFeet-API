@@ -8,7 +8,6 @@ import { InMemoryRecipientRepository } from 'test/repositories/in-memory-recipie
 import { FakeSendMessage } from 'test/messaging/fake-send-message'
 import { makePackage } from 'test/factories/make-package'
 import { InMemoryPackageRepository } from 'test/repositories/in-memory-package-repository'
-import { State } from '@/domain/carrier/enterprise/entities/package'
 import { makeRecipient } from 'test/factories/make-recipient'
 
 let inMemoryPackageRepository: InMemoryPackageRepository
@@ -47,7 +46,7 @@ describe('On Package State Change', () => {
 
     await inMemoryPackageRepository.create(pckg)
 
-    pckg.state = State.PENDING
+    pckg.state = 'PENDING'
 
     await inMemoryPackageRepository.save(pckg)
 

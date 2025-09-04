@@ -1,5 +1,4 @@
 import { UniqueEntityID } from '@/core/entities/unique-entity-id'
-import { State } from '../../enterprise/entities/package'
 import { PackageRepository } from '../repositories/package-repository'
 import { PhotoDeliveredPackageRepository } from '../repositories/photo-delivered-package-repository'
 import { PackageDoesNotExistsError } from './errors/package-does-not-exists-error'
@@ -40,7 +39,7 @@ export class MarkPackageAsDeliveredUseCase {
 
     photoDeliveredPackage.packageId = new UniqueEntityID(packageId)
 
-    pckg.state = State.DELIVERED
+    pckg.state = 'DELIVERED'
     pckg.deliveredAt = new Date()
 
     this.photoDeliveredPackageRepository.save(photoDeliveredPackage)

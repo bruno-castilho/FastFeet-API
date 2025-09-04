@@ -1,4 +1,3 @@
-import { State } from '../../enterprise/entities/package'
 import { PackageRepository } from '../repositories/package-repository'
 import { PackageDoesNotExistsError } from './errors/package-does-not-exists-error'
 
@@ -14,7 +13,7 @@ export class MarkPackageAsPendingUseCase {
 
     if (!pckg) throw new PackageDoesNotExistsError(packageId)
 
-    pckg.state = State.PENDING
+    pckg.state = 'PENDING'
     pckg.postedAt = new Date()
 
     await this.packageRepository.save(pckg)

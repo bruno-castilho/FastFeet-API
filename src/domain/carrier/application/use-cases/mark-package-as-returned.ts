@@ -1,4 +1,3 @@
-import { State } from '../../enterprise/entities/package'
 import { PackageRepository } from '../repositories/package-repository'
 import { PackageDoesNotExistsError } from './errors/package-does-not-exists-error'
 
@@ -14,7 +13,7 @@ export class MarkPackageAsReturnedUseCase {
 
     if (!pckg) throw new PackageDoesNotExistsError(packageId)
 
-    pckg.state = State.RETURNED
+    pckg.state = 'RETURNED'
     pckg.returnedAt = new Date()
 
     this.packageRepository.save(pckg)
