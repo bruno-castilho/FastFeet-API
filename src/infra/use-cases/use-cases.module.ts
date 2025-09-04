@@ -19,9 +19,11 @@ import { MarkPackageAsPending } from './mark-package-as-pending'
 import { MarkPackageAsPickedUp } from './mark-package-as-picked-up'
 import { MarkPackageAsReturned } from './mark-package-as-returned'
 import { FetchPackagesByDeliveryPerson } from './fetch-packages-by-delivery-person'
+import { StorageModule } from '../storage/storage.module'
+import { UploadAndCreatePhotoDeliveredPackage } from './upload-and-create-photo-delivered-package'
 
 @Module({
-  imports: [DatabaseModule, CryptographyModule, CepModule],
+  imports: [DatabaseModule, CryptographyModule, CepModule, StorageModule],
   providers: [
     CreateDeliveryPerson,
     UpdateDeliveryPerson,
@@ -40,6 +42,7 @@ import { FetchPackagesByDeliveryPerson } from './fetch-packages-by-delivery-pers
     MarkPackageAsPickedUp,
     MarkPackageAsReturned,
     FetchPackagesByDeliveryPerson,
+    UploadAndCreatePhotoDeliveredPackage,
   ],
   exports: [
     CreateDeliveryPerson,
@@ -59,6 +62,7 @@ import { FetchPackagesByDeliveryPerson } from './fetch-packages-by-delivery-pers
     MarkPackageAsPickedUp,
     MarkPackageAsReturned,
     FetchPackagesByDeliveryPerson,
+    UploadAndCreatePhotoDeliveredPackage,
   ],
 })
 export class UseCasesModule {}

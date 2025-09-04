@@ -1,5 +1,5 @@
 import { InMemoryPhotoDeliveredPackageRepository } from 'test/repositories/in-memory-photo-delivered-package-repository'
-import { UploadAndCreatePhotoDeliveredPackageUseCase } from './upload-and-create-photo-delivered'
+import { UploadAndCreatePhotoDeliveredPackageUseCase } from './upload-and-create-photo-delivered-package'
 import { FakeUploader } from 'test/storage/fake-uploader'
 import { InvalidPhotoDeliveredPackageTypeError } from './errors/invalid-photo-delivered-package-type-error'
 

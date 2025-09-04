@@ -25,14 +25,14 @@ export class UploadAndCreatePhotoDeliveredPackageUseCase {
 
     const { url } = await this.uploader.upload({ fileName, fileType, body })
 
-    const photodeliveredpackage = PhotoDeliveredPackage.create({
+    const photoDeliveredPackage = PhotoDeliveredPackage.create({
       url,
     })
 
-    await this.photoDeliveredPackageRepository.create(photodeliveredpackage)
+    await this.photoDeliveredPackageRepository.create(photoDeliveredPackage)
 
     return {
-      photodeliveredpackage,
+      photoDeliveredPackage,
     }
   }
 }

@@ -4,6 +4,7 @@ import { PrismaDeliveryPersonRepository } from './prisma/repositories/prisma-del
 import { PrismaService } from './prisma/prisma.service'
 import { PrismaRecipientRepository } from './prisma/repositories/prisma-recipient-repository'
 import { PrismaPackageRepository } from './prisma/repositories/prisma-package-repository'
+import { PrismaPhotoDeliveredPackageRepository } from './prisma/repositories/prisma-photo-delivered-package-repository'
 
 @Module({
   providers: [
@@ -11,12 +12,14 @@ import { PrismaPackageRepository } from './prisma/repositories/prisma-package-re
     PrismaDeliveryPersonRepository,
     PrismaRecipientRepository,
     PrismaPackageRepository,
+    PrismaPhotoDeliveredPackageRepository,
   ],
   exports: [
     PrismaService,
     PrismaDeliveryPersonRepository,
     PrismaRecipientRepository,
     PrismaPackageRepository,
+    PrismaPhotoDeliveredPackageRepository,
   ],
 })
 export class DatabaseModule {}

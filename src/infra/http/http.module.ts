@@ -18,6 +18,7 @@ import { MarkPackageAsPendingController } from './controllers/mark-package-as-pe
 import { MarkPackageAsPickedUpController } from './controllers/mark-package-as-picked-up.controller'
 import { MarkPackageAsReturnedController } from './controllers/mark-package-as-returned.controller'
 import { FetchPackagesByDeliveryPersonController } from './controllers/fetch-packages-by-delivery-person.controller'
+import { UploadAndCreatePhotoDeliveredPackageController } from './controllers/upload-and-create-photo-delivered-package.controller'
 
 @Module({
   imports: [UseCasesModule, FiltersModule],
@@ -39,6 +40,7 @@ import { FetchPackagesByDeliveryPersonController } from './controllers/fetch-pac
     MarkPackageAsPickedUpController,
     MarkPackageAsReturnedController,
     FetchPackagesByDeliveryPersonController,
+    UploadAndCreatePhotoDeliveredPackageController,
   ],
 })
 export class HTTPModule {}
