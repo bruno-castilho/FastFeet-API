@@ -5,7 +5,7 @@ interface FetchPackageByDeliveryPersonUseCaseRequest {
   page: number
 }
 
-export class FetchPackageByDeliveryPersonUseCase {
+export class FetchPackagesByDeliveryPersonUseCase {
   constructor(private packageRepository: PackageRepository) {}
 
   async execute({

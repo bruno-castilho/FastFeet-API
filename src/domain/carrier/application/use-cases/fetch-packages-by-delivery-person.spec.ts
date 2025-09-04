@@ -1,16 +1,16 @@
 import { InMemoryPackageRepository } from 'test/repositories/in-memory-package-repository'
-import { FetchPackageByDeliveryPersonUseCase } from './fetch-package-by-delivery-person'
+import { FetchPackagesByDeliveryPersonUseCase } from './fetch-packages-by-delivery-person'
 import { makePackage } from 'test/factories/make-package'
 import { UniqueEntityID } from '@/core/entities/unique-entity-id'
 
 let inMemoryPackageRepository: InMemoryPackageRepository
-let sut: FetchPackageByDeliveryPersonUseCase
+let sut: FetchPackagesByDeliveryPersonUseCase
 
 describe('Fetch Package By Delivery Person', () => {
   beforeEach(() => {
     inMemoryPackageRepository = new InMemoryPackageRepository()
 
-    sut = new FetchPackageByDeliveryPersonUseCase(inMemoryPackageRepository)
+    sut = new FetchPackagesByDeliveryPersonUseCase(inMemoryPackageRepository)
   })
 
   it('should be able to fetch package by delivery person', async () => {

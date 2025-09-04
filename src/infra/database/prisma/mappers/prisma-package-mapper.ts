@@ -50,7 +50,7 @@ export class PrismaPackageMapper {
         heightInCentimeters: raw.heightInCentimeters,
         weightInGrams: raw.weightInGrams,
         widthInCentimeters: raw.widthInCentimeters,
-        state: this.stateToDomain(raw.state),
+        state: State.CREATED,
         createdAt: raw.createdAt,
         deliveredAt: raw.deliveredAt,
         pickedUpAt: raw.pickedUpAt,

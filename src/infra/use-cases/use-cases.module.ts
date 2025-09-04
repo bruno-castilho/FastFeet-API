@@ -18,6 +18,7 @@ import { GetPackage } from './get-package'
 import { MarkPackageAsPending } from './mark-package-as-pending'
 import { MarkPackageAsPickedUp } from './mark-package-as-picked-up'
 import { MarkPackageAsReturned } from './mark-package-as-returned'
+import { FetchPackagesByDeliveryPerson } from './fetch-packages-by-delivery-person'
 
 @Module({
   imports: [DatabaseModule, CryptographyModule, CepModule],
@@ -38,6 +39,7 @@ import { MarkPackageAsReturned } from './mark-package-as-returned'
     MarkPackageAsPending,
     MarkPackageAsPickedUp,
     MarkPackageAsReturned,
+    FetchPackagesByDeliveryPerson,
   ],
   exports: [
     CreateDeliveryPerson,
@@ -56,6 +58,7 @@ import { MarkPackageAsReturned } from './mark-package-as-returned'
     MarkPackageAsPending,
     MarkPackageAsPickedUp,
     MarkPackageAsReturned,
+    FetchPackagesByDeliveryPerson,
   ],
 })
 export class UseCasesModule {}
