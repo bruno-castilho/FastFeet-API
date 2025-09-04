@@ -21,13 +21,13 @@ describe('Upload and create photo delivered package', () => {
   })
 
   it('should be able to upload and create an photo delivered package', async () => {
-    const { photodeliveredpackage } = await sut.execute({
+    const { photoDeliveredPackage } = await sut.execute({
       fileName: 'profile.png',
       fileType: 'image/png',
       body: Buffer.from(''),
     })
 
-    expect(photodeliveredpackage).toEqual(
+    expect(photoDeliveredPackage).toEqual(
       inMemoryPhotoDeliveredPackageRepository.items[0],
     )
     expect(fakeUploader.uploads).toHaveLength(1)

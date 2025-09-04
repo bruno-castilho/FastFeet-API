@@ -42,7 +42,7 @@ export class MarkPackageAsDeliveredUseCase {
     pckg.state = 'DELIVERED'
     pckg.deliveredAt = new Date()
 
-    this.photoDeliveredPackageRepository.save(photoDeliveredPackage)
-    this.packageRepository.save(pckg)
+    await this.photoDeliveredPackageRepository.save(photoDeliveredPackage)
+    await this.packageRepository.save(pckg)
   }
 }

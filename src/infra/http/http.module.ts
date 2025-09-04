@@ -19,6 +19,7 @@ import { MarkPackageAsPickedUpController } from './controllers/mark-package-as-p
 import { MarkPackageAsReturnedController } from './controllers/mark-package-as-returned.controller'
 import { FetchPackagesByDeliveryPersonController } from './controllers/fetch-packages-by-delivery-person.controller'
 import { UploadAndCreatePhotoDeliveredPackageController } from './controllers/upload-and-create-photo-delivered-package.controller'
+import { MarkPackageAsDeliveredController } from './controllers/mark-package-as-delivered.controller'
 
 @Module({
   imports: [UseCasesModule, FiltersModule],
@@ -41,6 +42,7 @@ import { UploadAndCreatePhotoDeliveredPackageController } from './controllers/up
     MarkPackageAsReturnedController,
     FetchPackagesByDeliveryPersonController,
     UploadAndCreatePhotoDeliveredPackageController,
+    MarkPackageAsDeliveredController,
   ],
 })
 export class HTTPModule {}

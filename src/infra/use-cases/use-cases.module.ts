@@ -21,6 +21,7 @@ import { MarkPackageAsReturned } from './mark-package-as-returned'
 import { FetchPackagesByDeliveryPerson } from './fetch-packages-by-delivery-person'
 import { StorageModule } from '../storage/storage.module'
 import { UploadAndCreatePhotoDeliveredPackage } from './upload-and-create-photo-delivered-package'
+import { MarkPackageAsDelivered } from './mark-package-as-delivered'
 
 @Module({
   imports: [DatabaseModule, CryptographyModule, CepModule, StorageModule],
@@ -43,6 +44,7 @@ import { UploadAndCreatePhotoDeliveredPackage } from './upload-and-create-photo-
     MarkPackageAsReturned,
     FetchPackagesByDeliveryPerson,
     UploadAndCreatePhotoDeliveredPackage,
+    MarkPackageAsDelivered,
   ],
   exports: [
     CreateDeliveryPerson,
@@ -63,6 +65,7 @@ import { UploadAndCreatePhotoDeliveredPackage } from './upload-and-create-photo-
     MarkPackageAsReturned,
     FetchPackagesByDeliveryPerson,
     UploadAndCreatePhotoDeliveredPackage,
+    MarkPackageAsDelivered,
   ],
 })
 export class UseCasesModule {}

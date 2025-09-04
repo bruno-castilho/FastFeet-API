@@ -8,6 +8,8 @@ import { InvalidCEPExceptionFilter } from './invalid-cep-exception.filter'
 import { RecipientDoesNotExistsError } from '@/domain/carrier/application/use-cases/errors/recipient-does-not-exists-error'
 import { PackageDoesNotExistsExceptionFilter } from './package-does-not-exists-exception.filter'
 import { InvalidPhotoDeliveredPackageTypeExceptionFilter } from './invalid-photo-delivered-package-type-exception.filter'
+import { PhotoDeliveredPackageDoesNotExistsExceptionFilter } from './photo-delivered-package-does-not-exists-exception.filter'
+import { DeliveryPersonIsNotPickedUpThePackageExceptionFilter } from './delivery-person-is-not-picked-up-the-package-exception.filter'
 
 @Module({
   providers: [
@@ -42,6 +44,14 @@ import { InvalidPhotoDeliveredPackageTypeExceptionFilter } from './invalid-photo
     {
       provide: APP_FILTER,
       useClass: InvalidPhotoDeliveredPackageTypeExceptionFilter,
+    },
+    {
+      provide: APP_FILTER,
+      useClass: PhotoDeliveredPackageDoesNotExistsExceptionFilter,
+    },
+    {
+      provide: APP_FILTER,
+      useClass: DeliveryPersonIsNotPickedUpThePackageExceptionFilter,
     },
   ],
 })
