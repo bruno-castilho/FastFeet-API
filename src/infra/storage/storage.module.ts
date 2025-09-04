@@ -1,10 +1,11 @@
 import { Module } from '@nestjs/common'
-import { R2Storage } from './r2-storage'
+
 import { EnvModule } from '../env/env.module'
+import { S3Storage } from './s3-storage'
 
 @Module({
   imports: [EnvModule],
-  providers: [R2Storage],
-  exports: [R2Storage],
+  providers: [S3Storage],
+  exports: [S3Storage],
 })
 export class StorageModule {}

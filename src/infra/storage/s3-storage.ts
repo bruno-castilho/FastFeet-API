@@ -8,18 +8,16 @@ import {
 } from '@/domain/carrier/application/storage/uploader'
 
 @Injectable()
-export class R2Storage implements Uploader {
+export class S3Storage implements Uploader {
   private client: S3Client
 
   constructor(private envService: EnvService) {
-    const accountId = envService.get('CLOUDFLARE_ACCOUNT_ID')
-
     this.client = new S3Client({
-      endpoint: `https://${accountId}.r2.cloudflarestorage.com`,
+      endpoint: envService.get('S3_ENDPOINT'),
       region: 'auto',
       credentials: {
-        accessKeyId: envService.get('AWS_ACCESS_KEY_ID'),
-        secretAccessKey: envService.get('AWS_SECRET_ACCESS_KEY'),
+        accessKeyId: envService.get('S3_ACCESS_KEY_ID'),
+        secretAccessKey: envService.get('S3_SECRET_ACCESS_KEY'),
       },
     })
   }
@@ -34,7 +32,7 @@ export class R2Storage implements Uploader {
 
     await this.client.send(
       new PutObjectCommand({
-        Bucket: this.envService.get('AWS_BUCKET_NAME'),
+        Bucket: this.envService.get('S3_BUCKET_NAME'),
         Key: uniqueFileName,
         ContentType: fileType,
         Body: body,
