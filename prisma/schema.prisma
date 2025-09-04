@@ -81,10 +81,20 @@ model Package {
   recipient      Recipient         @relation(fields: [recipientId], references: [id])
   deliveredPerson      User?         @relation(fields: [deliveredBy], references: [id])
 
-
+  photos     PhotoDeliveredPackage[]
   @@map("packages")
 }
 
 
 
+
+model PhotoDeliveredPackage {
+  id       String @id @default(uuid())
+  url String
+  packageId String?
+
+  package      Package?         @relation(fields: [packageId], references: [id])
+
+  @@map("photosDeliveredPackage")
+}
 
