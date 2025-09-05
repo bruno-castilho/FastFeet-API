@@ -4,6 +4,7 @@ import { Package } from '@/domain/carrier/enterprise/entities/package'
 import { PrismaPackageMapper } from '../mappers/prisma-package-mapper'
 import { Injectable } from '@nestjs/common'
 import { PaginationParams } from '@/core/repositories/pagination-params'
+import { Package as PrismaPackage } from '@prisma/client'
 
 @Injectable()
 export class PrismaPackageRepository implements PackageRepository {
@@ -69,8 +70,28 @@ export class PrismaPackageRepository implements PackageRepository {
   async findManyNearbyPanding(
     latitude: number,
     longitude: number,
-    params: PaginationParams,
+    { page }: PaginationParams,
   ): Promise<Package[]> {
-    throw new Error('Not implemented')
+    const distanceInKm = 10
+
+    const packages = await this.prismaService.$queryRaw<PrismaPackage[]>`
+      SELECT packages.*
+      FROM packages
+      LEFT JOIN recipients 
+        ON packages."recipientId" = recipients.id
+      WHERE (
+        6371 * acos(
+          cos(radians(${latitude})) 
+          * cos(radians(recipients.latitude)) 
+          * cos(radians(recipients.longitude) - radians(${longitude})) 
+          + sin(radians(${latitude})) 
+          * sin(radians(recipients.latitude))
+        )
+      ) <= ${distanceInKm}
+      LIMIT 20
+      OFFSET ${(page - 1) * 20};
+    `
+
+    return packages.map(PrismaPackageMapper.toDomain)
   }
 }

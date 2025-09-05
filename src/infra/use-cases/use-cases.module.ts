@@ -22,6 +22,7 @@ import { FetchPackagesByDeliveryPerson } from './fetch-packages-by-delivery-pers
 import { StorageModule } from '../storage/storage.module'
 import { UploadAndCreatePhotoDeliveredPackage } from './upload-and-create-photo-delivered-package'
 import { MarkPackageAsDelivered } from './mark-package-as-delivered'
+import { FetchNearbyPackage } from './fetch-nearby-package'
 
 @Module({
   imports: [DatabaseModule, CryptographyModule, CepModule, StorageModule],
@@ -45,6 +46,7 @@ import { MarkPackageAsDelivered } from './mark-package-as-delivered'
     FetchPackagesByDeliveryPerson,
     UploadAndCreatePhotoDeliveredPackage,
     MarkPackageAsDelivered,
+    FetchNearbyPackage,
   ],
   exports: [
     CreateDeliveryPerson,
@@ -66,6 +68,7 @@ import { MarkPackageAsDelivered } from './mark-package-as-delivered'
     FetchPackagesByDeliveryPerson,
     UploadAndCreatePhotoDeliveredPackage,
     MarkPackageAsDelivered,
+    FetchNearbyPackage,
   ],
 })
 export class UseCasesModule {}
