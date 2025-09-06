@@ -5,6 +5,7 @@ import { PrismaPackageMapper } from '../mappers/prisma-package-mapper'
 import { Injectable } from '@nestjs/common'
 import { PaginationParams } from '@/core/repositories/pagination-params'
 import { Package as PrismaPackage } from '@prisma/client'
+import { DomainEvents } from '@/core/events/domain-events'
 
 @Injectable()
 export class PrismaPackageRepository implements PackageRepository {
@@ -39,6 +40,8 @@ export class PrismaPackageRepository implements PackageRepository {
         id: data.id,
       },
     })
+
+    DomainEvents.dispatchEventsForAggregate(pckg.id)
   }
 
   async delete(pckg: Package) {
