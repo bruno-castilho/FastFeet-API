@@ -21,10 +21,12 @@ import { FetchPackagesByDeliveryPersonController } from './controllers/fetch-pac
 import { UploadAndCreatePhotoDeliveredPackageController } from './controllers/upload-and-create-photo-delivered-package.controller'
 import { MarkPackageAsDeliveredController } from './controllers/mark-package-as-delivered.controller'
 import { FetchNearbyPackageController } from './controllers/fetch-nearby-package.controller'
+import { AuthenticateDeliveryPersonController } from './controllers/authenticate-delivery-person.controller'
 
 @Module({
   imports: [UseCasesModule, FiltersModule],
   controllers: [
+    AuthenticateDeliveryPersonController,
     CreateDeliveryPersonController,
     UpdateDeliveryPersonController,
     RemoveDeliveryPersonController,

@@ -1,8 +1,11 @@
 import { Module } from '@nestjs/common'
 import { BcryptHasher } from './bcrypt-hasher'
+import { JwtEncrypter } from './jwt-encrypter'
+import { AuthModule } from '../auth/auth.module'
 
 @Module({
-  providers: [BcryptHasher],
-  exports: [BcryptHasher],
+  imports: [AuthModule],
+  providers: [BcryptHasher, JwtEncrypter],
+  exports: [BcryptHasher, JwtEncrypter],
 })
 export class CryptographyModule {}

@@ -23,10 +23,12 @@ import { StorageModule } from '../storage/storage.module'
 import { UploadAndCreatePhotoDeliveredPackage } from './upload-and-create-photo-delivered-package'
 import { MarkPackageAsDelivered } from './mark-package-as-delivered'
 import { FetchNearbyPackage } from './fetch-nearby-package'
+import { AuthenticateDeliveryPerson } from './authenticate-delivery-person'
 
 @Module({
   imports: [DatabaseModule, CryptographyModule, CepModule, StorageModule],
   providers: [
+    AuthenticateDeliveryPerson,
     CreateDeliveryPerson,
     UpdateDeliveryPerson,
     RemoveDeliveryPerson,
@@ -49,6 +51,7 @@ import { FetchNearbyPackage } from './fetch-nearby-package'
     FetchNearbyPackage,
   ],
   exports: [
+    AuthenticateDeliveryPerson,
     CreateDeliveryPerson,
     UpdateDeliveryPerson,
     RemoveDeliveryPerson,
