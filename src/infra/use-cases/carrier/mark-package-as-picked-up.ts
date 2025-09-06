@@ -1,7 +1,7 @@
 import { MarkPackageAsPickedUpUseCase } from '@/domain/carrier/application/use-cases/mark-package-as-picked-up'
-import { PrismaPackageRepository } from '../database/prisma/repositories/prisma-package-repository'
+import { PrismaDeliveryPersonRepository } from '@/infra/database/prisma/repositories/prisma-delivery-person-repository'
+import { PrismaPackageRepository } from '@/infra/database/prisma/repositories/prisma-package-repository'
 import { Injectable } from '@nestjs/common'
-import { PrismaDeliveryPersonRepository } from '../database/prisma/repositories/prisma-delivery-person-repository'
 
 @Injectable()
 export class MarkPackageAsPickedUp extends MarkPackageAsPickedUpUseCase {

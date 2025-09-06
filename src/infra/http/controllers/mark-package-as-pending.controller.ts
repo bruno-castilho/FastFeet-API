@@ -1,6 +1,6 @@
 import { Controller, Param, Patch } from '@nestjs/common'
 
-import { MarkPackageAsPending } from '@/infra/use-cases/mark-package-as-pending'
+import { MarkPackageAsPending } from '@/infra/use-cases/carrier/mark-package-as-pending'
 
 @Controller('/package/:packageId/pending')
 export class MarkPackageAsPendingController {

@@ -1,4 +1,4 @@
-import { CreateDeliveryPerson } from '@/infra/use-cases/create-delivery-person'
+import { CreateDeliveryPerson } from '@/infra/use-cases/carrier/create-delivery-person'
 import { Body, Controller, Post } from '@nestjs/common'
 import z from 'zod'
 import { ZodValidationPipe } from '../pipes/zod-validation-pipe'

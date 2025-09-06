@@ -1,4 +1,4 @@
-import { GetPackage } from '@/infra/use-cases/get-package'
+import { GetPackage } from '@/infra/use-cases/carrier/get-package'
 import { Controller, Get, Param } from '@nestjs/common'
 import { PackagePresenter } from '../presenters/package-presenter'
 

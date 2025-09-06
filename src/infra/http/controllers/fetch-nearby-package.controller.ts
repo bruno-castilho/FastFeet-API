@@ -2,7 +2,7 @@ import { Controller, Get, Query } from '@nestjs/common'
 import { PackagePresenter } from '../presenters/package-presenter'
 import z from 'zod'
 import { ZodValidationPipe } from '../pipes/zod-validation-pipe'
-import { FetchNearbyPackage } from '@/infra/use-cases/fetch-nearby-package'
+import { FetchNearbyPackage } from '@/infra/use-cases/carrier/fetch-nearby-package'
 
 const fetchNearbyPackageQuerySchema = z.object({
   latitude: z.coerce.number(),

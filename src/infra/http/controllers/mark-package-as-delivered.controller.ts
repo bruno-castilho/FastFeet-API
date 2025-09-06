@@ -1,5 +1,5 @@
 import { Body, Controller, Param, Patch } from '@nestjs/common'
-import { MarkPackageAsDelivered } from '@/infra/use-cases/mark-package-as-delivered'
+import { MarkPackageAsDelivered } from '@/infra/use-cases/carrier/mark-package-as-delivered'
 import z from 'zod'
 import { ZodValidationPipe } from '../pipes/zod-validation-pipe'
 

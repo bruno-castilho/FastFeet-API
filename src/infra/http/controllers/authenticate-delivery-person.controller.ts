@@ -2,7 +2,7 @@ import { Body, Controller, Post } from '@nestjs/common'
 import z from 'zod'
 import { ZodValidationPipe } from '../pipes/zod-validation-pipe'
 import { isValidCPF } from '@/core/utils/isValidCPF'
-import { AuthenticateDeliveryPerson } from '@/infra/use-cases/authenticate-delivery-person'
+import { AuthenticateDeliveryPerson } from '@/infra/use-cases/carrier/authenticate-delivery-person'
 
 const authenticateDeliveryPersonBodySchema = z.object({
   cpf: z.string().refine(isValidCPF, { message: 'CPF inválido' }),

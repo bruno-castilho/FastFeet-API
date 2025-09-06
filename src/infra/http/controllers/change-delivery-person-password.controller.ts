@@ -1,7 +1,7 @@
 import { Body, Controller, Param, Patch } from '@nestjs/common'
 import z from 'zod'
 import { ZodValidationPipe } from '../pipes/zod-validation-pipe'
-import { ChangeDeliveryPersonPassword } from '@/infra/use-cases/change-delivery-person-password'
+import { ChangeDeliveryPersonPassword } from '@/infra/use-cases/carrier/change-delivery-person-password'
 
 const changeDeliveryPersonPasswordBodySchema = z.object({
   password: z

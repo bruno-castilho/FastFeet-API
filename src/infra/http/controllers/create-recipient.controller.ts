@@ -1,4 +1,4 @@
-import { CreateRecipient } from '@/infra/use-cases/create-recipient'
+import { CreateRecipient } from '@/infra/use-cases/carrier/create-recipient'
 import { Body, Controller, Post } from '@nestjs/common'
 import z from 'zod'
 import { ZodValidationPipe } from '../pipes/zod-validation-pipe'

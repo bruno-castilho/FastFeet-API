@@ -1,6 +1,6 @@
 import { GetPackageUseCase } from '@/domain/carrier/application/use-cases/get-package'
+import { PrismaPackageRepository } from '@/infra/database/prisma/repositories/prisma-package-repository'
 import { Injectable } from '@nestjs/common'
-import { PrismaPackageRepository } from '../database/prisma/repositories/prisma-package-repository'
 
 @Injectable()
 export class GetPackage extends GetPackageUseCase {

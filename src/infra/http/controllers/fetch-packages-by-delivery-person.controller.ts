@@ -2,7 +2,7 @@ import { Controller, Get, Param, Query } from '@nestjs/common'
 import { PackagePresenter } from '../presenters/package-presenter'
 import z from 'zod'
 import { ZodValidationPipe } from '../pipes/zod-validation-pipe'
-import { FetchPackagesByDeliveryPerson } from '@/infra/use-cases/fetch-packages-by-delivery-person'
+import { FetchPackagesByDeliveryPerson } from '@/infra/use-cases/carrier/fetch-packages-by-delivery-person'
 
 const fetchPackagesByDeliveryPersonQuerySchema = z.object({
   page: z

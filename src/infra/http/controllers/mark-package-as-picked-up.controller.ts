@@ -1,5 +1,5 @@
 import { Body, Controller, Param, Patch } from '@nestjs/common'
-import { MarkPackageAsPickedUp } from '@/infra/use-cases/mark-package-as-picked-up'
+import { MarkPackageAsPickedUp } from '@/infra/use-cases/carrier/mark-package-as-picked-up'
 import z from 'zod'
 import { ZodValidationPipe } from '../pipes/zod-validation-pipe'
 

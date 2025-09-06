@@ -1,4 +1,4 @@
-import { RemoveRecipient } from '@/infra/use-cases/remove-recipient'
+import { RemoveRecipient } from '@/infra/use-cases/carrier/remove-recipient'
 import { Controller, Param, Delete } from '@nestjs/common'
 
 @Controller('/recipient/:recipientId')

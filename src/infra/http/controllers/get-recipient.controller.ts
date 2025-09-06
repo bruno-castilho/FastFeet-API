@@ -1,4 +1,4 @@
-import { GetRecipient } from '@/infra/use-cases/get-recipient'
+import { GetRecipient } from '@/infra/use-cases/carrier/get-recipient'
 import { Controller, Get, Param } from '@nestjs/common'
 import { RecipientPresenter } from '../presenters/recipient-presenter'
 

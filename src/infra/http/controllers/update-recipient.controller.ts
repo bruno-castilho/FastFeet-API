@@ -1,4 +1,4 @@
-import { UpdateRecipient } from '@/infra/use-cases/update-recipient'
+import { UpdateRecipient } from '@/infra/use-cases/carrier/update-recipient'
 import { Body, Controller, Param, Put } from '@nestjs/common'
 import z from 'zod'
 import { ZodValidationPipe } from '../pipes/zod-validation-pipe'

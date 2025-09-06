@@ -1,6 +1,6 @@
 import { Controller, Param, Patch } from '@nestjs/common'
 
-import { MarkPackageAsReturned } from '@/infra/use-cases/mark-package-as-returned'
+import { MarkPackageAsReturned } from '@/infra/use-cases/carrier/mark-package-as-returned'
 
 @Controller('/package/:packageId/returned')
 export class MarkPackageAsReturnedController {

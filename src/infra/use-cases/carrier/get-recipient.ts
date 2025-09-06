@@ -1,6 +1,6 @@
 import { GetRecipientUseCase } from '@/domain/carrier/application/use-cases/get-recipient'
+import { PrismaRecipientRepository } from '@/infra/database/prisma/repositories/prisma-recipient-repository'
 import { Injectable } from '@nestjs/common'
-import { PrismaRecipientRepository } from '../database/prisma/repositories/prisma-recipient-repository'
 
 @Injectable()
 export class GetRecipient extends GetRecipientUseCase {

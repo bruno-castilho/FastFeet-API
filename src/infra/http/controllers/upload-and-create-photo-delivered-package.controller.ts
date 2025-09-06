@@ -1,4 +1,4 @@
-import { UploadAndCreatePhotoDeliveredPackage } from '@/infra/use-cases/upload-and-create-photo-delivered-package'
+import { UploadAndCreatePhotoDeliveredPackage } from '@/infra/use-cases/carrier/upload-and-create-photo-delivered-package'
 import {
   Controller,
   FileTypeValidator,

@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common'
-import { PrismaDeliveryPersonRepository } from '../database/prisma/repositories/prisma-delivery-person-repository'
 import { GetDeliveryPersonUseCase } from '@/domain/carrier/application/use-cases/get-delivery-person'
+import { PrismaDeliveryPersonRepository } from '@/infra/database/prisma/repositories/prisma-delivery-person-repository'
 
 @Injectable()
 export class GetDeliveryPerson extends GetDeliveryPersonUseCase {

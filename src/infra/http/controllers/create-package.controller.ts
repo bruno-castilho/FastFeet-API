@@ -1,4 +1,4 @@
-import { CreatePackage } from '@/infra/use-cases/create-package'
+import { CreatePackage } from '@/infra/use-cases/carrier/create-package'
 import { Body, Controller, Post } from '@nestjs/common'
 import z from 'zod'
 import { ZodValidationPipe } from '../pipes/zod-validation-pipe'

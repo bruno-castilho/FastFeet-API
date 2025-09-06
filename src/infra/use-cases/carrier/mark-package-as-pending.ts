@@ -1,5 +1,5 @@
 import { MarkPackageAsPendingUseCase } from '@/domain/carrier/application/use-cases/mark-package-as-pending'
-import { PrismaPackageRepository } from '../database/prisma/repositories/prisma-package-repository'
+import { PrismaPackageRepository } from '@/infra/database/prisma/repositories/prisma-package-repository'
 import { Injectable } from '@nestjs/common'
 
 @Injectable()

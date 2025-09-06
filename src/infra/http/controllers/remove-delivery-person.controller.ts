@@ -1,4 +1,4 @@
-import { RemoveDeliveryPerson } from '@/infra/use-cases/remove-delivery-person'
+import { RemoveDeliveryPerson } from '@/infra/use-cases/carrier/remove-delivery-person'
 import { Controller, Delete, Param } from '@nestjs/common'
 
 @Controller('/deliveryperson/:deliveryPersonId')

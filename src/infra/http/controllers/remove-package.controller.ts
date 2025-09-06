@@ -1,4 +1,4 @@
-import { RemovePackage } from '@/infra/use-cases/remove-package'
+import { RemovePackage } from '@/infra/use-cases/carrier/remove-package'
 import { Controller, Param, Delete } from '@nestjs/common'
 
 @Controller('/package/:packageId')
