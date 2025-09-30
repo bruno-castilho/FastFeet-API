@@ -23,17 +23,19 @@ describe('Authenticate Delivery Person(E2E)', () => {
     await app.init()
   })
 
-  test('[POST] /sessions', async () => {
+  test('[POST] /auth/deliveryperson', async () => {
     const deliveryPerson = await deliveryPersonFactory.makePrismaDeliveryPerson(
       {
         password: await hash('@B123456', 8),
       },
     )
 
-    const response = await request(app.getHttpServer()).post('/sessions').send({
-      cpf: deliveryPerson.cpf.value,
-      password: '@B123456',
-    })
+    const response = await request(app.getHttpServer())
+      .post('/auth/deliveryperson')
+      .send({
+        cpf: deliveryPerson.cpf.value,
+        password: '@B123456',
+      })
 
     expect(response.statusCode).toBe(201)
     expect(response.body).toEqual({

@@ -3,6 +3,7 @@ import z from 'zod'
 import { ZodValidationPipe } from '../pipes/zod-validation-pipe'
 import { isValidCPF } from '@/core/utils/isValidCPF'
 import { AuthenticateDeliveryPerson } from '@/infra/use-cases/carrier/authenticate-delivery-person'
+import { ApiBody, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger'
 
 const authenticateDeliveryPersonBodySchema = z.object({
   cpf: z.string().refine(isValidCPF, { message: 'CPF inválido' }),
@@ -25,11 +26,59 @@ type AuthenticateDeliveryPersonBodySchema = z.infer<
   typeof authenticateDeliveryPersonBodySchema
 >
 
-@Controller('/sessions')
+@ApiTags('Auth')
+@Controller('/auth/deliveryperson')
 export class AuthenticateDeliveryPersonController {
   constructor(private authenticateDeliveryPerson: AuthenticateDeliveryPerson) {}
 
   @Post()
+  @ApiOperation({
+    summary: 'Autentica um entregador e retorna um access token',
+  })
+  @ApiBody({
+    schema: {
+      type: 'object',
+      properties: {
+        cpf: { type: 'string' },
+        password: { type: 'string' },
+      },
+      required: ['cpf', 'password'],
+    },
+  })
+  @ApiResponse({
+    status: 201,
+    description: 'Autenticação realizada com sucesso',
+    schema: {
+      type: 'object',
+      properties: {
+        accessToken: {
+          type: 'string',
+        },
+        message: { type: 'string', example: 'Bem Vindo!' },
+      },
+    },
+  })
+  @ApiResponse({
+    status: 400,
+    description: 'Parâmetros inválidos',
+    schema: {
+      type: 'object',
+      properties: {
+        message: { type: 'string', example: 'Erro de validação' },
+        errors: { type: 'object' },
+      },
+    },
+  })
+  @ApiResponse({
+    status: 401,
+    description: 'Credenciais inválidas',
+    schema: {
+      type: 'object',
+      properties: {
+        message: { type: 'string', example: 'Credenciais inválidas' },
+      },
+    },
+  })
   async handle(
     @Body(new ZodValidationPipe(authenticateDeliveryPersonBodySchema))
     body: AuthenticateDeliveryPersonBodySchema,
