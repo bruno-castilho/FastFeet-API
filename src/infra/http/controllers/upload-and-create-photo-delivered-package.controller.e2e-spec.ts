@@ -17,9 +17,9 @@ describe('Upload And Create Photo of Delivered Package (E2E)', () => {
     await app.init()
   })
 
-  test('[POST] /photodeliveredpackage', async () => {
+  test('[POST] package/photodeliveredpackage', async () => {
     const response = await request(app.getHttpServer())
-      .post('/photodeliveredpackage')
+      .post('package/photodeliveredpackage')
       .attach('file', './test/e2e/sample-upload.png')
 
     expect(response.statusCode).toBe(201)
