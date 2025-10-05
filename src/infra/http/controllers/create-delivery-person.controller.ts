@@ -3,6 +3,7 @@ import { Body, Controller, Post } from '@nestjs/common'
 import z from 'zod'
 import { ZodValidationPipe } from '../pipes/zod-validation-pipe'
 import { isValidCPF } from '@/core/utils/isValidCPF'
+import { ApiBody, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger'
 
 const createDeliveryPersonBodySchema = z.object({
   firstName: z.string(),
@@ -28,11 +29,72 @@ type CreateDeliveryPersonBodySchema = z.infer<
   typeof createDeliveryPersonBodySchema
 >
 
+@ApiTags('Deliveryperson')
 @Controller('/deliveryperson')
 export class CreateDeliveryPersonController {
   constructor(private createDeliveryPerson: CreateDeliveryPerson) {}
 
   @Post()
+  @ApiOperation({
+    summary: 'Registra um novo entregador',
+  })
+  @ApiBody({
+    schema: {
+      type: 'object',
+      properties: {
+        firstName: { type: 'string', example: 'João' },
+        lastName: { type: 'string', example: 'Silva' },
+        cpf: { type: 'string', example: '39053344705' },
+        email: { type: 'string', example: 'joao@email.com' },
+        password: { type: 'string', example: 'Senha@123' },
+      },
+      required: ['firstName', 'lastName', 'cpf', 'email', 'password'],
+    },
+  })
+  @ApiResponse({
+    status: 201,
+    description: 'Entregador registrado com sucesso',
+    schema: {
+      type: 'object',
+      properties: {
+        message: {
+          type: 'string',
+          example: 'Entregador registrado com sucesso!',
+        },
+      },
+    },
+  })
+  @ApiResponse({
+    status: 400,
+    description: 'Parâmetros inválidos',
+    schema: {
+      type: 'object',
+      properties: {
+        message: { type: 'string', example: 'Erro de validação' },
+        errors: { type: 'object' },
+      },
+    },
+  })
+  @ApiResponse({
+    status: 409,
+    description: 'E-mail já cadastrado',
+    schema: {
+      type: 'object',
+      properties: {
+        message: { type: 'string', example: 'E-mail já cadastrado' },
+      },
+    },
+  })
+  @ApiResponse({
+    status: 409,
+    description: 'CPF já cadastrado',
+    schema: {
+      type: 'object',
+      properties: {
+        message: { type: 'string', example: 'CPF já cadastrado' },
+      },
+    },
+  })
   async handle(
     @Body(new ZodValidationPipe(createDeliveryPersonBodySchema))
     body: CreateDeliveryPersonBodySchema,
