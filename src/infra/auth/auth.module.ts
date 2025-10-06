@@ -1,11 +1,15 @@
 import { Module } from '@nestjs/common'
-
 import { EnvModule } from '../env/env.module'
 import { JwtModule } from '@nestjs/jwt'
 import { EnvService } from '../env/env.service'
+import { JwtStrategy } from './jwt.strategy'
+import { APP_GUARD } from '@nestjs/core'
+import { JwtAuthGuard } from './jwt-auth.guard'
+import { PassportModule } from '@nestjs/passport'
 
 @Module({
   imports: [
+    PassportModule,
     JwtModule.registerAsync({
       imports: [EnvModule],
       inject: [EnvService],
@@ -22,7 +26,14 @@ import { EnvService } from '../env/env.service'
       },
     }),
   ],
-  providers: [],
+  providers: [
+    JwtStrategy,
+    EnvService,
+    {
+      provide: APP_GUARD,
+      useClass: JwtAuthGuard,
+    },
+  ],
   exports: [],
 })
 export class AuthModule {}
