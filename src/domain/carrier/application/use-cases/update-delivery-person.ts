@@ -1,7 +1,7 @@
 import { DeliveryPersonRepository } from '../repositories/delivery-person-repository'
 import { DeliveryPersonDoesNotExistsError } from './errors/delivery-person-does-not-exists-error'
-import { CPF } from '../../enterprise/entities/value-objects/cpf'
-import { Email } from '../../enterprise/entities/value-objects/email'
+import { CPF } from '../../../../core/entities/value-objects/cpf'
+import { Email } from '../../../../core/entities/value-objects/email'
 import { EmailAlreadyExistsError } from './errors/email-already-exists-error'
 import { CPFAlreadyExistsError } from './errors/cpf-already-exists-error'
 

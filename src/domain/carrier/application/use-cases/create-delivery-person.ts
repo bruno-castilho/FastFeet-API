@@ -1,10 +1,11 @@
 import { DeliveryPerson } from '../../enterprise/entities/delivery-person'
-import { CPF } from '../../enterprise/entities/value-objects/cpf'
-import { Email } from '../../enterprise/entities/value-objects/email'
-import { HashGenerator } from '../cryptography/hash-generator'
+import { CPF } from '../../../../core/entities/value-objects/cpf'
+import { Email } from '../../../../core/entities/value-objects/email'
+
 import { DeliveryPersonRepository } from '../repositories/delivery-person-repository'
 import { CPFAlreadyExistsError } from './errors/cpf-already-exists-error'
 import { EmailAlreadyExistsError } from './errors/email-already-exists-error'
+import { HashGenerator } from '@/domain/users/application/cryptography/hash-generator'
 
 interface CreateDeliveryPersonUseCaseRequest {
   firstName: string

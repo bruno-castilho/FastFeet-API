@@ -5,6 +5,9 @@ import { PrismaService } from './prisma/prisma.service'
 import { PrismaRecipientRepository } from './prisma/repositories/prisma-recipient-repository'
 import { PrismaPackageRepository } from './prisma/repositories/prisma-package-repository'
 import { PrismaPhotoDeliveredPackageRepository } from './prisma/repositories/prisma-photo-delivered-package-repository'
+import { PrismaAdminRepository } from './prisma/repositories/prisma-admin-repository'
+import { PrismaUserRepository } from './prisma/repositories/prisma-user-repository'
+import { PrismaSessionRepository } from './prisma/repositories/prisma-session-repository'
 
 @Module({
   providers: [
@@ -13,6 +16,9 @@ import { PrismaPhotoDeliveredPackageRepository } from './prisma/repositories/pri
     PrismaRecipientRepository,
     PrismaPackageRepository,
     PrismaPhotoDeliveredPackageRepository,
+    PrismaAdminRepository,
+    PrismaUserRepository,
+    PrismaSessionRepository,
   ],
   exports: [
     PrismaService,
@@ -20,6 +26,9 @@ import { PrismaPhotoDeliveredPackageRepository } from './prisma/repositories/pri
     PrismaRecipientRepository,
     PrismaPackageRepository,
     PrismaPhotoDeliveredPackageRepository,
+    PrismaAdminRepository,
+    PrismaUserRepository,
+    PrismaSessionRepository,
   ],
 })
 export class DatabaseModule {}

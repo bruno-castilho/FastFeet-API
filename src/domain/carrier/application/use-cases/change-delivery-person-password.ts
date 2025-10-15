@@ -1,4 +1,4 @@
-import { HashGenerator } from '../cryptography/hash-generator'
+import { HashGenerator } from '@/domain/users/application/cryptography/hash-generator'
 import { DeliveryPersonRepository } from '../repositories/delivery-person-repository'
 import { DeliveryPersonDoesNotExistsError } from './errors/delivery-person-does-not-exists-error'
 

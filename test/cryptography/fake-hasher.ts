@@ -1,5 +1,5 @@
-import { HashComparer } from '@/domain/carrier/application/cryptography/hash-comparer'
-import { HashGenerator } from '@/domain/carrier/application/cryptography/hash-generator'
+import { HashComparer } from '@/domain/users/application/cryptography/hash-comparer'
+import { HashGenerator } from '@/domain/users/application/cryptography/hash-generator'
 
 export class FakeHasher implements HashGenerator, HashComparer {
   async hash(plain: string): Promise<string> {

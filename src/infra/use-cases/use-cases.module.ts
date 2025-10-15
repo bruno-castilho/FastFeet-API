@@ -22,10 +22,11 @@ import { FetchPackagesByDeliveryPerson } from './carrier/fetch-packages-by-deliv
 import { StorageModule } from '../storage/storage.module'
 import { MarkPackageAsDelivered } from './carrier/mark-package-as-delivered'
 import { FetchNearbyPackage } from './carrier/fetch-nearby-package'
-import { AuthenticateDeliveryPerson } from './carrier/authenticate-delivery-person'
 import { UploadAndCreatePhotoDeliveredPackage } from './carrier/upload-and-create-photo-delivered-package'
 import { NotificationModule } from '../notification/notification.module'
 import { SendNotification } from './notification/send-notification'
+import { RegisterUser } from './users/register-user'
+import { AuthenticateUser } from './users/authenticate-user'
 
 @Module({
   imports: [
@@ -36,7 +37,6 @@ import { SendNotification } from './notification/send-notification'
     NotificationModule,
   ],
   providers: [
-    AuthenticateDeliveryPerson,
     CreateDeliveryPerson,
     UpdateDeliveryPerson,
     RemoveDeliveryPerson,
@@ -58,9 +58,10 @@ import { SendNotification } from './notification/send-notification'
     MarkPackageAsDelivered,
     FetchNearbyPackage,
     SendNotification,
+    RegisterUser,
+    AuthenticateUser,
   ],
   exports: [
-    AuthenticateDeliveryPerson,
     CreateDeliveryPerson,
     UpdateDeliveryPerson,
     RemoveDeliveryPerson,
@@ -82,6 +83,8 @@ import { SendNotification } from './notification/send-notification'
     MarkPackageAsDelivered,
     FetchNearbyPackage,
     SendNotification,
+    RegisterUser,
+    AuthenticateUser,
   ],
 })
 export class UseCasesModule {}

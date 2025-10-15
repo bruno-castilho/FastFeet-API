@@ -29,9 +29,26 @@ model User {
   role UserRole @default(DELIVERY_PERSON)
 
   packagesDelivered     Package[]
+  sessions     Session[]
 
   @@map("users")
 }
+
+model Session {
+  id       String @id @default(uuid())
+  accessToken String
+  refreshToken String
+  userAgent String
+  ip String
+  createdAt DateTime
+  updatedAt DateTime?
+  userId String
+
+  user      User         @relation(fields: [userId], references: [id])
+
+  @@map("sessions")
+}
+
 
 model Recipient {
   id       String @id @default(uuid())

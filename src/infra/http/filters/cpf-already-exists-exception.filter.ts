@@ -1,4 +1,4 @@
-import { CPFAlreadyExistsError } from '@/domain/carrier/application/use-cases/errors/cpf-already-exists-error'
+import { CPFAlreadyExistsError } from '@/domain/users/application/use-cases/errors/cpf-already-exists-error'
 import { Catch, ExceptionFilter, ConflictException } from '@nestjs/common'
 
 @Catch(CPFAlreadyExistsError)

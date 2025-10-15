@@ -1,8 +1,8 @@
 import { UniqueEntityID } from '@/core/entities/unique-entity-id'
 import { Recipient } from '@/domain/carrier/enterprise/entities/recipient'
-import { CEP } from '@/domain/carrier/enterprise/entities/value-objects/cep'
-import { Email } from '@/domain/carrier/enterprise/entities/value-objects/email'
-import { Phone } from '@/domain/carrier/enterprise/entities/value-objects/phone'
+import { CEP } from '@/core/entities/value-objects/cep'
+import { Email } from '@/core/entities/value-objects/email'
+import { Phone } from '@/core/entities/value-objects/phone'
 import { Prisma, Recipient as RecipientPrisma } from '@prisma/client'
 
 export class PrismaRecipientMapper {

@@ -4,8 +4,8 @@ import { makeDeliveryPerson } from 'test/factories/make-delivery-person'
 import { randomUUID } from 'node:crypto'
 import { DeliveryPersonDoesNotExistsError } from './errors/delivery-person-does-not-exists-error'
 import { EmailAlreadyExistsError } from './errors/email-already-exists-error'
-import { Email } from '../../enterprise/entities/value-objects/email'
-import { CPF } from '../../enterprise/entities/value-objects/cpf'
+import { Email } from '../../../../core/entities/value-objects/email'
+import { CPF } from '../../../../core/entities/value-objects/cpf'
 import { CPFAlreadyExistsError } from './errors/cpf-already-exists-error'
 
 let inMemoryDeliveryPersonRepository: InMemoryDeliveryPersonRepository

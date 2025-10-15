@@ -1,7 +1,7 @@
 import { UniqueEntityID } from '@/core/entities/unique-entity-id'
 import { DeliveryPerson } from '@/domain/carrier/enterprise/entities/delivery-person'
-import { CPF } from '@/domain/carrier/enterprise/entities/value-objects/cpf'
-import { Email } from '@/domain/carrier/enterprise/entities/value-objects/email'
+import { CPF } from '@/core/entities/value-objects/cpf'
+import { Email } from '@/core/entities/value-objects/email'
 import { Prisma, User } from '@prisma/client'
 
 export class PrismaDeliveryPersonMapper {

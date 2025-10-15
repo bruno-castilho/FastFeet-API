@@ -4,9 +4,9 @@ import {
   Recipient,
   RecipientProps,
 } from '@/domain/carrier/enterprise/entities/recipient'
-import { Phone } from '@/domain/carrier/enterprise/entities/value-objects/phone'
-import { Email } from '@/domain/carrier/enterprise/entities/value-objects/email'
-import { CEP } from '@/domain/carrier/enterprise/entities/value-objects/cep'
+import { Phone } from '@/core/entities/value-objects/phone'
+import { Email } from '@/core/entities/value-objects/email'
+import { CEP } from '@/core/entities/value-objects/cep'
 import { Injectable } from '@nestjs/common'
 import { PrismaService } from '@/infra/database/prisma/prisma.service'
 import { PrismaRecipientMapper } from '@/infra/database/prisma/mappers/prisma-recipient-mapper'

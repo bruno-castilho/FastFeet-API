@@ -1,8 +1,8 @@
 import { Entity } from '@/core/entities/entity'
-import { Email } from './value-objects/email'
+import { Email } from '../../../../core/entities/value-objects/email'
 import { UniqueEntityID } from '@/core/entities/unique-entity-id'
-import { CEP } from './value-objects/cep'
-import { Phone } from './value-objects/phone'
+import { CEP } from '../../../../core/entities/value-objects/cep'
+import { Phone } from '../../../../core/entities/value-objects/phone'
 
 export interface RecipientProps {
   firstName: string

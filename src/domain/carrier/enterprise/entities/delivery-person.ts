@@ -1,7 +1,7 @@
 import { UniqueEntityID } from '@/core/entities/unique-entity-id'
 import { Entity } from '@/core/entities/entity'
-import { CPF } from './value-objects/cpf'
-import { Email } from './value-objects/email'
+import { CPF } from '../../../../core/entities/value-objects/cpf'
+import { Email } from '../../../../core/entities/value-objects/email'
 
 export interface DeliveryPersonProps {
   firstName: string

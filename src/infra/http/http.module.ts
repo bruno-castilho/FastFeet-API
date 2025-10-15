@@ -1,32 +1,34 @@
 import { Module } from '@nestjs/common'
-import { CreateDeliveryPersonController } from './controllers/create-delivery-person.controller'
 import { UseCasesModule } from '../use-cases/use-cases.module'
 import { FiltersModule } from './filters/filters.module'
-import { UpdateDeliveryPersonController } from './controllers/update-delivery-person.controller'
-import { RemoveDeliveryPersonController } from './controllers/remove-delivery-person.controller'
-import { GetDeliveryPersonController } from './controllers/get-delivery-person.controller'
-import { ChangeDeliveryPersonPasswordController } from './controllers/change-delivery-person-password.controller'
-import { CreateRecipientController } from './controllers/create-recipient.controller'
-import { UpdateRecipientController } from './controllers/update-recipient.controller'
-import { RemoveRecipientController } from './controllers/remove-recipient.controller'
-import { GetRecipientController } from './controllers/get-recipient.controller'
-import { CreatePackageController } from './controllers/create-package.controller'
-import { UpdatePackageController } from './controllers/update-package.controller'
-import { RemovePackageController } from './controllers/remove-package.controller'
-import { GetPackageController } from './controllers/get-package.controller'
-import { MarkPackageAsPendingController } from './controllers/mark-package-as-pending.controller'
-import { MarkPackageAsPickedUpController } from './controllers/mark-package-as-picked-up.controller'
-import { MarkPackageAsReturnedController } from './controllers/mark-package-as-returned.controller'
-import { FetchPackagesByDeliveryPersonController } from './controllers/fetch-packages-by-delivery-person.controller'
-import { UploadAndCreatePhotoDeliveredPackageController } from './controllers/upload-and-create-photo-delivered-package.controller'
-import { MarkPackageAsDeliveredController } from './controllers/mark-package-as-delivered.controller'
-import { FetchNearbyPackageController } from './controllers/fetch-nearby-package.controller'
-import { AuthenticateDeliveryPersonController } from './controllers/authenticate-delivery-person.controller'
+import { CreateDeliveryPersonController } from './controllers/carrier/create-delivery-person.controller'
+import { UpdateDeliveryPersonController } from './controllers/carrier/update-delivery-person.controller'
+import { RemoveDeliveryPersonController } from './controllers/carrier/remove-delivery-person.controller'
+import { GetDeliveryPersonController } from './controllers/carrier/get-delivery-person.controller'
+import { ChangeDeliveryPersonPasswordController } from './controllers/carrier/change-delivery-person-password.controller'
+import { CreateRecipientController } from './controllers/carrier/create-recipient.controller'
+import { UpdateRecipientController } from './controllers/carrier/update-recipient.controller'
+import { RemoveRecipientController } from './controllers/carrier/remove-recipient.controller'
+import { GetRecipientController } from './controllers/carrier/get-recipient.controller'
+import { CreatePackageController } from './controllers/carrier/create-package.controller'
+import { UpdatePackageController } from './controllers/carrier/update-package.controller'
+import { RemovePackageController } from './controllers/carrier/remove-package.controller'
+import { GetPackageController } from './controllers/carrier/get-package.controller'
+import { MarkPackageAsPendingController } from './controllers/carrier/mark-package-as-pending.controller'
+import { MarkPackageAsPickedUpController } from './controllers/carrier/mark-package-as-picked-up.controller'
+import { MarkPackageAsReturnedController } from './controllers/carrier/mark-package-as-returned.controller'
+import { UploadAndCreatePhotoDeliveredPackageController } from './controllers/carrier/upload-and-create-photo-delivered-package.controller'
+import { MarkPackageAsDeliveredController } from './controllers/carrier/mark-package-as-delivered.controller'
+import { FetchNearbyPackageController } from './controllers/carrier/fetch-nearby-package.controller'
+import { FetchPackagesByDeliveryPersonController } from './controllers/carrier/fetch-packages-by-delivery-person.controller'
+import { RegisterUserController } from './controllers/users/register-user.controller'
+import { AuthenticateUserController } from './controllers/users/authenticate-user.controller'
+import { AuthModule } from '../auth/auth.module'
 
 @Module({
-  imports: [UseCasesModule, FiltersModule],
+  imports: [UseCasesModule, FiltersModule, AuthModule],
+  providers: [],
   controllers: [
-    AuthenticateDeliveryPersonController,
     CreateDeliveryPersonController,
     UpdateDeliveryPersonController,
     RemoveDeliveryPersonController,
@@ -47,6 +49,8 @@ import { AuthenticateDeliveryPersonController } from './controllers/authenticate
     UploadAndCreatePhotoDeliveredPackageController,
     MarkPackageAsDeliveredController,
     FetchNearbyPackageController,
+    RegisterUserController,
+    AuthenticateUserController,
   ],
 })
 export class HTTPModule {}

@@ -1,4 +1,4 @@
-import { EmailAlreadyExistsError } from '@/domain/carrier/application/use-cases/errors/email-already-exists-error'
+import { EmailAlreadyExistsError } from '@/domain/users/application/use-cases/errors/email-already-exists-error'
 import { Catch, ExceptionFilter, ConflictException } from '@nestjs/common'
 
 @Catch(EmailAlreadyExistsError)
