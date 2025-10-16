@@ -23,4 +23,10 @@ export class InMemorySessionRepository implements SessionRepository {
 
     this.items[itemIndex] = session
   }
+
+  async delete(session: Session): Promise<void> {
+    const itemIndex = this.items.findIndex((item) => item.id === session.id)
+
+    this.items.splice(itemIndex, 1)
+  }
 }
