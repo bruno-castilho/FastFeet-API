@@ -4,6 +4,16 @@ import { User } from '@/domain/users/enterprise/entities/user'
 export class InMemoryUserRepository implements UserRepository {
   public items: User[] = []
 
+  async findById(id: string) {
+    const user = this.items.find((item) => item.id.toValue() === id)
+
+    if (!user) {
+      return null
+    }
+
+    return user
+  }
+
   async findByCPF(cpf: string) {
     const user = this.items.find((item) => item.cpf.value === cpf)
 
